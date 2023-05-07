@@ -10,7 +10,7 @@ abstract class KeylolInterceptor extends Interceptor {
   }
 
   bool _valid(Response response) {
-    // 非 api 调用不拦截
+    /// 非 api 调用不拦截
     final uri = response.realUri;
     if (!uri.path.contains('/api/mobile/index.php')) {
       return false;

@@ -1,39 +1,16 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# [其乐](https://keylol.com) API 
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+调用Discuz mobile接口,没有相应接口的页面通过爬取网页实现
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## API 列表
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+|方法|说明|
+|-|-|
+|getSmsLoginParam|获取短信登录所需参数,如短信发送所需图形验证码,验证码发送以及验证码登录|
+|getSecCodeLoginParam|密码登录有时需要图形验证码,此时调用此接口获取登录用参数,如图形验证码以及登录|
+|getSecCode|获取图形验证码,短信登录和密码登录需要的验证码均使用此接口|
+|checkSecCode|预校验图形验证码|
+|sendSms|发送短信验证验证码|
+|loginWithSms|短信验证码登录|
+|loginWithPassword|密码登录,可能会登录失败根据失败类型判断是否需要图形验证码|
+|loginWithSecCode|密码登录需要图形验证码时调用此接口登录|

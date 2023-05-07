@@ -20,7 +20,7 @@ class Keylol {
     final appDocDir = await getApplicationDocumentsDirectory();
     final appDocPath = appDocDir.path;
 
-    // cookie持久化
+    /// cookie持久化
     final cj = PersistCookieJar(storage: FileStorage(appDocPath + cookiePath));
     dio.interceptors.add(CookieManager(cj));
 
