@@ -14,3 +14,38 @@
 |loginWithSms|短信验证码登录|
 |loginWithPassword|密码登录,可能会登录失败根据失败类型判断是否需要图形验证码|
 |loginWithSecCode|密码登录需要图形验证码时调用此接口登录|
+
+## 登录流程
+
+### 密码登录
+
+```mermaid
+graph TD;
+start([密码登录]) --> A;
+A[loginWithPassword] --> B;
+B{是否需要验证码} --否--> finish([登录成功]);
+B --是--> D;
+D[/auth/] --> E
+E[getSecCodeLoginParam] --> F;
+F[getSecCode] --> G;
+G{是否需要刷新验证码} --否--> K;
+G --是--> L;
+L[LoginParam#genIdHash] --> M;
+M[/idHash/] --> F; 
+K[loginWithSecCode] --> finish;
+```
+
+### 短信登录
+
+```mermaid
+graph TD;
+start([密码登录]) --> A;
+A[getSmsLoginParam] --> B;
+B[getSecCode] --> C;
+C{是否需要刷新验证码} --否--> D;
+C --是--> E;
+E[LoginParam#genIdHash] --> F;
+F[/auth/] --> B;
+D[sendSms] --> G;
+G[loginWithSms] --> finish([登录成功]);
+```
