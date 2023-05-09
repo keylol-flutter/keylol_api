@@ -14,6 +14,7 @@
 |loginWithSms|短信验证码登录|
 |loginWithPassword|密码登录,可能会登录失败根据失败类型判断是否需要图形验证码|
 |loginWithSecCode|密码登录需要图形验证码时调用此接口登录|
+|getIndex|获取主页帖子，轮播图和分组帖子|
 
 ## 登录流程
 
