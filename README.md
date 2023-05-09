@@ -39,7 +39,7 @@ K[loginWithSecCode] --> finish;
 
 ```mermaid
 graph TD;
-start([密码登录]) --> A;
+start([短信登录]) --> A;
 A[getSmsLoginParam] --> B;
 B[getSecCode] --> C;
 C{是否需要刷新验证码} --否--> D;
