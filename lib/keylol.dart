@@ -7,7 +7,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 class Keylol {
   final Dio _dio;
 
-  Keylol._internal(this._dio);
+  Keylol(this._dio);
 
   static Future<Keylol> create() async {
     final dio = Dio(BaseOptions(
@@ -24,7 +24,7 @@ class Keylol {
     final cj = PersistCookieJar(storage: FileStorage(appDocPath + cookiePath));
     dio.interceptors.add(CookieManager(cj));
 
-    return Keylol._internal(dio);
+    return Keylol(dio);
   }
 
   Dio dio() => _dio;
