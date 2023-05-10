@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/models/variables.dart';
 
 import 'message.dart';
 
@@ -20,8 +21,9 @@ class ApiResponse<T> {
 
   ApiResponse(this.charset, this.variables, this.message, this.version);
 
-  static ApiResponse<dynamic> empty(dynamic json) {
-    return ApiResponse.fromJson(json, (json) => null);
+  static ApiResponse<DefaultVariables> empty(Map<String, dynamic> json) {
+    return ApiResponse.fromJson(json,
+        (json) => DefaultVariables.fromJson(json as Map<String, dynamic>));
   }
 
   factory ApiResponse.fromJson(

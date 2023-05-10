@@ -26,7 +26,7 @@ start([密码登录]) --> A;
 A[loginWithPassword] --> B;
 B{是否需要验证码} --否--> finish([登录成功]);
 B --是--> D;
-D[/auth/] --> E
+D[/formHash/] --> E
 E[getSecCodeLoginParam] --> F;
 F[getSecCode] --> G;
 G{是否需要刷新验证码} --否--> K;

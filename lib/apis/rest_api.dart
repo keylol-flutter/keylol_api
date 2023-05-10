@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:keylol_api/models/api_response.dart';
+import 'package:keylol_api/models/variables.dart';
 
 /// api 调用
 extension RestApi on Keylol {
@@ -10,7 +13,7 @@ extension RestApi on Keylol {
   /// login_succeed -> 登录成功
   /// login_seccheck2 -> 需要图形验证码
   /// other -> 登录失败错误信息 messsagestr
-  Future<ApiResponse<dynamic>> loginWithPassword({
+  Future<ApiResponse<DefaultVariables>> loginWithPassword({
     required String username,
     required String password,
   }) async {
@@ -27,6 +30,6 @@ extension RestApi on Keylol {
           'questionid': '0'
         }));
 
-    return compute(ApiResponse.empty, resp.data);
+    return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
   }
 }
