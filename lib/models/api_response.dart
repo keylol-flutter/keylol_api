@@ -14,7 +14,7 @@ class ApiResponse<T> {
   final T variables;
 
   @JsonKey(name: 'Message')
-  final Message message;
+  final Message? message;
 
   @JsonKey(name: 'Version')
   final String version;
@@ -22,13 +22,16 @@ class ApiResponse<T> {
   ApiResponse(this.charset, this.variables, this.message, this.version);
 
   static ApiResponse<DefaultVariables> empty(Map<String, dynamic> json) {
-    return ApiResponse.fromJson(json,
-        (json) => DefaultVariables.fromJson(json as Map<String, dynamic>));
+    return ApiResponse.fromJson({
+      'json': json,
+      'fromJsonT': (json) =>
+          DefaultVariables.fromJson(json as Map<String, dynamic>)
+    });
   }
 
-  factory ApiResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
-      _$ApiResponseFromJson(json, fromJsonT);
+  factory ApiResponse.fromJson(Map<String, dynamic> params) =>
+      _$ApiResponseFromJson(params['json'] as Map<String, dynamic>,
+          params['fromJsonT'] as T Function(Object? json));
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$ApiResponseToJson(this, toJsonT);
