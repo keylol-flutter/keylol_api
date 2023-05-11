@@ -1,4 +1,5 @@
 # [其乐](https://keylol.com) API 
+[![Coverage Status](https://coveralls.io/repos/github/keylol-flutter/keylol_api/badge.svg?branch=main)](https://coveralls.io/github/keylol-flutter/keylol_api?branch=main)
 
 调用Discuz mobile接口,没有相应接口的页面通过爬取网页实现
 
