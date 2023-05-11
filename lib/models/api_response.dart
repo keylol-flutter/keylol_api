@@ -30,8 +30,13 @@ class ApiResponse<T> {
   }
 
   factory ApiResponse.fromJson(Map<String, dynamic> params) =>
-      _$ApiResponseFromJson(params['json'] as Map<String, dynamic>,
-          params['fromJsonT'] as T Function(Object? json));
+      _$ApiResponseFromJson(params['json'] as Map<String, dynamic>, (json) {
+        if (json is Map<String, dynamic>) {
+          return (params['fromJsonT'] as T Function(Map<String, dynamic> json))
+              .call(json);
+        }
+        return json as T;
+      });
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$ApiResponseToJson(this, toJsonT);

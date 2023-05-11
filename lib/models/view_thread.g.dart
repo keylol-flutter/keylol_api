@@ -23,8 +23,9 @@ ViewThread _$ViewThreadFromJson(Map<String, dynamic> json) => ViewThread(
       (json['postlist'] as List<dynamic>)
           .map((e) => Post.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['imageList'] as List<dynamic>).map((e) => e as String).toList(),
-      SpecialPoll.fromJson(json['special_poll'] as Map<String, dynamic>),
+      json['special_poll'] == null
+          ? null
+          : SpecialPoll.fromJson(json['special_poll'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ViewThreadToJson(ViewThread instance) =>
@@ -43,6 +44,5 @@ Map<String, dynamic> _$ViewThreadToJson(ViewThread instance) =>
       'fid': instance.fid,
       'thread': instance.thread,
       'postlist': instance.postList,
-      'imageList': instance.imageList,
       'special_poll': instance.specialPoll,
     };

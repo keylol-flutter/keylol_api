@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'thread.g.dart';
 
@@ -17,9 +18,9 @@ class Thread {
   final String typeId;
   @JsonKey(name: 'sortid')
   final String sortId;
-  @JsonKey(name: 'readperm')
+  @JsonKey(name: 'readperm', fromJson: stringToInt, toJson: stringFromInt)
   final int readPerm;
-  @JsonKey(name: 'price')
+  @JsonKey(name: 'price', fromJson: stringToInt, toJson: stringFromInt)
   final int price;
 
   // 作者
@@ -47,53 +48,53 @@ class Thread {
   final String lastPoster;
 
   // 查看数
-  @JsonKey(name: 'views')
+  @JsonKey(name: 'views', fromJson: stringToInt, toJson: stringFromInt)
   final int views;
 
   // 回复数
-  @JsonKey(name: 'replies')
+  @JsonKey(name: 'replies', fromJson: stringToInt, toJson: stringFromInt)
   final int replies;
-  @JsonKey(name: 'displayorder')
+  @JsonKey(name: 'displayorder', fromJson: stringToInt, toJson: stringFromInt)
   final int displayOrder;
   @JsonKey(name: 'highlight')
   final String highlight;
 
   // 精华
-  @JsonKey(name: 'digest')
+  @JsonKey(name: 'digest', fromJson: stringToBool, toJson: stringFromBool)
   final bool digest;
   @JsonKey(name: 'rate')
-  final int rate;
+  final String rate;
   @JsonKey(name: 'special')
-  final int special;
+  final String special;
   @JsonKey(name: 'attachment')
-  final int attachment;
+  final String attachment;
   @JsonKey(name: 'moderated')
-  final int moderated;
+  final String moderated;
   @JsonKey(name: 'closed')
-  final int closed;
+  final String closed;
   @JsonKey(name: 'stickreply')
-  final int stickReply;
+  final String stickReply;
 
   // 支持数
-  @JsonKey(name: 'recommends')
+  @JsonKey(name: 'recommends', fromJson: stringToInt, toJson: stringFromInt)
   final int recommends;
   @JsonKey(name: 'recommend_add')
-  final int recommendAdd;
+  final String recommendAdd;
   @JsonKey(name: 'recommend_sub')
-  final int recommendSub;
-  @JsonKey(name: 'heats')
+  final String recommendSub;
+  @JsonKey(name: 'heats', fromJson: stringToInt, toJson: stringFromInt)
   final int heats;
   @JsonKey(name: 'status')
   final String status;
-  @JsonKey(name: 'isgroup')
-  final int isGroup;
+  @JsonKey(name: 'isgroup', fromJson: stringToBool, toJson: stringFromBool)
+  final bool isGroup;
 
   // 收藏数
-  @JsonKey(name: 'favtimes')
+  @JsonKey(name: 'favtimes', fromJson: stringToInt, toJson: stringFromInt)
   final int favTimes;
 
   // 分享数
-  @JsonKey(name: 'sharetimes')
+  @JsonKey(name: 'sharetimes', fromJson: stringToInt, toJson: stringFromInt)
   final int shareTimes;
   @JsonKey(name: 'stamp')
   final String stamp;
@@ -106,43 +107,33 @@ class Thread {
   @JsonKey(name: 'cover')
   final String cover;
   @JsonKey(name: 'replycredit')
-  final int replyCredit;
-  @JsonKey(name: 'relatedbytag')
-  final String relatedByTag;
-  @JsonKey(name: 'maxposition')
+  final String replyCredit;
+  @JsonKey(name: 'maxposition', fromJson: stringToInt, toJson: stringFromInt)
   final int maxPosition;
   @JsonKey(name: 'bgcolor')
   final String bgColor;
-  @JsonKey(name: 'comments')
+  @JsonKey(name: 'comments', fromJson: stringToInt, toJson: stringFromInt)
   final int comments;
-  @JsonKey(name: 'hidden')
-  final int hidden;
+  @JsonKey(name: 'hidden', fromJson: stringToBool, toJson: stringFromBool)
+  final bool hidden;
   @JsonKey(name: 'linksubmit')
-  final int linkSubmit;
+  final String linkSubmit;
   @JsonKey(name: 'threadtable')
   final String threadTable;
   @JsonKey(name: 'threadtableid')
   final String threadTableId;
-  @JsonKey(name: 'addviews')
+  @JsonKey(name: 'addviews', fromJson: stringToInt, toJson: stringFromInt)
   final int addViews;
-  @JsonKey(name: 'allreplies')
+  @JsonKey(name: 'allreplies', fromJson: stringToInt, toJson: stringFromInt)
   final int allReplies;
-  @JsonKey(name: 'is_archived')
+  @JsonKey(name: 'is_archived', fromJson: stringToBool, toJson: stringFromBool)
   final bool isArchived;
-  @JsonKey(name: 'archived')
-  final int archived;
   @JsonKey(name: 'subjectenc')
   final String subjectEnc;
   @JsonKey(name: 'short_subject')
   final String shortSubject;
   @JsonKey(name: 'replycredit_rule')
   final dynamic replyCreditRule;
-  @JsonKey(name: 'recommendlevel')
-  final String recommendLevel;
-  @JsonKey(name: 'heatlevel')
-  final String heatLevel;
-  @JsonKey(name: 'relay')
-  final String relay;
 
   Thread(
       this.tid,
@@ -182,7 +173,6 @@ class Thread {
       this.pushedAId,
       this.cover,
       this.replyCredit,
-      this.relatedByTag,
       this.maxPosition,
       this.bgColor,
       this.comments,
@@ -193,13 +183,9 @@ class Thread {
       this.addViews,
       this.allReplies,
       this.isArchived,
-      this.archived,
       this.subjectEnc,
       this.shortSubject,
-      this.replyCreditRule,
-      this.recommendLevel,
-      this.heatLevel,
-      this.relay);
+      this.replyCreditRule);
 
   factory Thread.fromJson(Map<String, dynamic> json) => _$ThreadFromJson(json);
 

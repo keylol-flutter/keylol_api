@@ -18,11 +18,8 @@ class ViewThread extends Variables {
   @JsonKey(name: 'postlist')
   final List<Post> postList;
 
-  @JsonKey(name: 'imageList')
-  final List<String> imageList;
-
-  @JsonKey(name: 'special_poll')
-  final SpecialPoll specialPoll;
+  @JsonKey(name: 'special_poll', disallowNullValue: false)
+  final SpecialPoll? specialPoll;
 
   ViewThread(
       super.cookiePre,
@@ -39,7 +36,6 @@ class ViewThread extends Variables {
       this.fid,
       this.thread,
       this.postList,
-      this.imageList,
       this.specialPoll);
 
   factory ViewThread.fromJson(Map<String, dynamic> json) =>
