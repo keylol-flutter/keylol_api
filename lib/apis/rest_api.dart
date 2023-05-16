@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:keylol_api/models/api_response.dart';
 import 'package:keylol_api/models/check_post.dart';
+import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
 
@@ -62,5 +64,63 @@ extension RestApi on Keylol {
       'json': resp.data,
       'fromJsonT': CheckPost.fromJson,
     });
+  }
+
+  /// 图片上传
+  Future<String> forumUpload(String uid, String uploadHash, XFile image,
+      {String type = 'image'}) async {
+    final resp = await dio().post('/api/mobile/index.php',
+        queryParameters: {'module': 'forumupload', 'type': type},
+        data: FormData.fromMap({
+          'uid': uid,
+          'hash': uploadHash,
+          'Filedata':
+              await MultipartFile.fromFile(image.path, filename: image.name)
+        }));
+    return resp.data;
+  }
+
+  /// 回复
+  /// post != null 时为回复帖子
+  Future<ApiResponse<DefaultVariables>> sendReply(String formHash, String tid,
+      String message, List<String> aids, Post? post) async {
+    final dateTime = DateTime.now();
+    final resp = await dio().post('/api/mobile/index.php',
+        queryParameters: {
+          'module': 'sendreply',
+          'replysubmit': 'yes',
+          'action': 'reply',
+          'tid': tid,
+          if (post != null) 'reppid': post.pid,
+        },
+        data: FormData.fromMap({
+          'formhash': formHash,
+          'message': message,
+          if (post != null)
+            'noticetrimstr': '''
+            [quote][size=2][url=forum.php?mod=redirect&goto=findpost&pid=${post.pid}&ptid=${post.tid}][color=#999999]${post.author} 发表于 ${dateTime.year}-${dateTime.month}-${dateTime.day} ${dateTime.hour}:${dateTime.minute}[/color][/url][/size]
+            ${post.shortMessage()}[/quote]
+            ''',
+          'posttime': '${dateTime.millisecondsSinceEpoch}',
+          'usesig': 1,
+          for (final aid in aids) 'attachnew[$aid][description]': aid,
+        }));
+
+    return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
+  }
+
+  /// 投票
+  Future<ApiResponse<DefaultVariables>> pollVote(
+      String tid, List<String> pollAnswers) async {
+    final resp = await dio().post('/api/mobile/index.php',
+        queryParameters: {
+          'module': 'pollvote',
+          'pollsubmit': 'yes',
+          'action': 'votepoll',
+          'tid': tid
+        },
+        data: FormData.fromMap({'pollanswers[]': pollAnswers}));
+
+    return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
   }
 }
