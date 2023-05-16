@@ -1,3 +1,5 @@
+import 'package:html/dom.dart';
+import 'package:html/parser.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/attachment.dart';
 import 'package:keylol_api/utils/json_util.dart';
@@ -60,6 +62,8 @@ class Post {
   @JsonKey(name: 'imagelist')
   final List<String> imageList;
 
+  String? _shortMessage;
+
   Post(
       this.pid,
       this.tid,
@@ -83,4 +87,31 @@ class Post {
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
   Map<String, dynamic> toJson() => _$PostToJson(this);
+
+  /// 短 message
+  /// 长度 100 以内回复帖子时引用显示用
+  String shortMessage() {
+    if (_shortMessage != null) {
+      return _shortMessage!;
+    }
+
+    final document = parse(message);
+
+    _shortMessage = '';
+    for (final node in document.body!.nodes) {
+      if (node is Text) {
+        _shortMessage = _shortMessage! + node.text;
+        if (_shortMessage!.length >= 100) break;
+      } else if (node is Element) {
+        _shortMessage = _shortMessage! + node.text;
+        if (_shortMessage!.length >= 100) break;
+      }
+    }
+
+    if (_shortMessage!.length >= 100) {
+      _shortMessage = '${_shortMessage!.substring(0, 100)}...';
+    }
+
+    return _shortMessage!;
+  }
 }
