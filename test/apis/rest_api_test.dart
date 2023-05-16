@@ -56,7 +56,7 @@ void main() {
         username: 'username',
         password: 'password',
       );
-      expect(resp.message.messageVal, 'login_succeed');
+      expect(resp.message?.messageVal, 'login_succeed');
     });
 
     test('should login fail', () async {
@@ -102,7 +102,7 @@ void main() {
         username: 'username',
         password: 'password',
       );
-      expect(resp.message.messageVal, 'login_invalid');
+      expect(resp.message?.messageVal, 'login_invalid');
     });
 
     test('should return auth', () async {
@@ -148,7 +148,7 @@ void main() {
         username: 'username',
         password: 'password',
       );
-      expect(resp.message.messageVal, 'login_seccheck2');
+      expect(resp.message?.messageVal, 'login_seccheck2');
       expect(resp.variables.formHash, 'xxxxxxxx');
     });
   });

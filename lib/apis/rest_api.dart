@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:keylol_api/models/api_response.dart';
+import 'package:keylol_api/models/check_post.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
 
@@ -51,6 +50,17 @@ extension RestApi on Keylol {
     return compute(ApiResponse.fromJson, {
       'json': resp.data,
       'fromJsonT': ViewThread.fromJson,
+    });
+  }
+
+  /// 权限
+  Future<ApiResponse<CheckPost>> checkPost() async {
+    final resp = await dio().post('/api/mobile/index.php',
+        queryParameters: {'module': 'checkpost'});
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': CheckPost.fromJson,
     });
   }
 }

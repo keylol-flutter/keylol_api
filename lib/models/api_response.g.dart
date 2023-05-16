@@ -13,7 +13,9 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
     ApiResponse<T>(
       json['Charset'] as String,
       fromJsonT(json['Variables']),
-      Message.fromJson(json['Message'] as Map<String, dynamic>),
+      json['Message'] == null
+          ? null
+          : Message.fromJson(json['Message'] as Map<String, dynamic>),
       json['Version'] as String,
     );
 
