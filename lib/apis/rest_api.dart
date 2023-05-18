@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:keylol_api/models/api_response.dart';
 import 'package:keylol_api/models/check_post.dart';
+import 'package:keylol_api/models/forum_index.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
@@ -122,5 +123,20 @@ extension RestApi on Keylol {
         data: FormData.fromMap({'pollanswers[]': pollAnswers}));
 
     return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
+  }
+
+  /// 版块索引
+  Future<ApiResponse<ForumIndex>> forumIndex() async {
+    final resp = await dio().post(
+      '/api/mobile/index.php',
+      queryParameters: {
+        'module': 'forumindex',
+      },
+    );
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': ForumIndex.fromJson,
+    });
   }
 }
