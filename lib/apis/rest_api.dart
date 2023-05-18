@@ -6,6 +6,7 @@ import 'package:keylol_api/models/api_response.dart';
 import 'package:keylol_api/models/check_post.dart';
 import 'package:keylol_api/models/forum_display.dart';
 import 'package:keylol_api/models/forum_index.dart';
+import 'package:keylol_api/models/my_fav_thread.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
@@ -157,5 +158,50 @@ extension RestApi on Keylol {
       'json': resp.data,
       'fromJsonT': ForumDisplay.fromJson,
     });
+  }
+
+  /// 收藏的帖子
+  Future<ApiResponse<MyFavThread>> myFavThread(int page) async {
+    final resp = await dio().post(
+      '/api/mobile/index.php',
+      queryParameters: {
+        'module': 'myfavthread',
+        'page': page,
+      },
+    );
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': MyFavThread.fromJson,
+    });
+  }
+
+  /// 收藏帖子
+  Future<ApiResponse<DefaultVariables>> favThread(
+      String tid, String description, String formHash) async {
+    final resp = await dio().post('/api/mobile/index.php',
+        queryParameters: {
+          'module': 'favthread',
+          'type': 'thread',
+          'id': tid,
+          'formhash': formHash,
+        },
+        data: FormData.fromMap({'description': description}));
+
+    return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
+  }
+
+  /// 删除收藏的帖子
+  Future<ApiResponse<DefaultVariables>> deleteFavThread(
+      String favId, String formHash) async {
+    final resp = await dio().post('/api/mobile/index.php', queryParameters: {
+      'module': 'favthread',
+      'op': 'delete',
+      'deletesubmit': 'true',
+      'favid': favId,
+      'formhash': formHash
+    });
+
+    return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
   }
 }
