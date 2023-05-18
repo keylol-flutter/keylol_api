@@ -235,8 +235,8 @@ extension WebApi on Keylol {
   }
 
   /// 主页信息, 轮播图和帖子
-  Future<Index> getIndex() async {
-    final resp = await dio().get("");
+  Future<Index> index() async {
+    final resp = await dio().get("/");
     return compute(parse, resp.data)
         .then((document) => Index.fromDocument(document));
   }

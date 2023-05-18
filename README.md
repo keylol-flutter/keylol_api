@@ -15,12 +15,14 @@
 |loginWithSms|短信验证码登录|
 |loginWithPassword|密码登录,可能会登录失败根据失败类型判断是否需要图形验证码|
 |loginWithSecCode|密码登录需要图形验证码时调用此接口登录|
-|getIndex|获取主页帖子，轮播图和分组帖子|
+|index|获取主页帖子，轮播图和分组帖子|
 |viewThread|查看帖子及回复|
 |checkPost|检查权限，发帖回复及文件上传限制|
 |forumUpload|文件上传|
 |sendReply|回复帖子|
 |pollVote|投票|
+|forumIndex|版块索引，版块分类以及分类下版块|
+|forumDisplay|版块帖子，包含版块信息及子版块|
 
 ## 登录流程
 

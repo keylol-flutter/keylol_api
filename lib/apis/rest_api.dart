@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:keylol_api/models/api_response.dart';
 import 'package:keylol_api/models/check_post.dart';
+import 'package:keylol_api/models/forum_display.dart';
 import 'package:keylol_api/models/forum_index.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/variables.dart';
@@ -137,6 +138,24 @@ extension RestApi on Keylol {
     return compute(ApiResponse.fromJson, {
       'json': resp.data,
       'fromJsonT': ForumIndex.fromJson,
+    });
+  }
+
+  /// 版块帖子
+  Future<ApiResponse<ForumDisplay>> forumDisplay(String fid, String? filter,
+      String? typeId, Map<String, String> params, int page) async {
+    final resp = await dio().get("/api/mobile/index.php",
+        queryParameters: {
+          'module': 'forumdisplay',
+          'fid': fid,
+          'filter': filter ?? 'typeid',
+          if (typeId != null) 'typeid': typeId,
+          'page': page
+        }..addAll(params));
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': ForumDisplay.fromJson,
     });
   }
 }
