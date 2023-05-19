@@ -7,6 +7,7 @@ import 'package:keylol_api/models/check_post.dart';
 import 'package:keylol_api/models/forum_display.dart';
 import 'package:keylol_api/models/forum_index.dart';
 import 'package:keylol_api/models/my_fav_thread.dart';
+import 'package:keylol_api/models/my_note_list.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
@@ -203,5 +204,18 @@ extension RestApi on Keylol {
     });
 
     return compute(ApiResponse.empty, resp.data as Map<String, dynamic>);
+  }
+
+  /// 通知列表
+  Future<ApiResponse<MyNoteList>> myNoteList(int page) async {
+    final resp = await dio().post('/api/mobile/index.php', queryParameters: {
+      'module': 'mynotelist',
+      'page': page,
+    });
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': MyNoteList.fromJson,
+    });
   }
 }
