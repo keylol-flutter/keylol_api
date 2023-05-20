@@ -9,6 +9,7 @@ import 'package:keylol_api/models/forum_index.dart';
 import 'package:keylol_api/models/my_fav_thread.dart';
 import 'package:keylol_api/models/my_note_list.dart';
 import 'package:keylol_api/models/post.dart';
+import 'package:keylol_api/models/profile.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
 
@@ -216,6 +217,19 @@ extension RestApi on Keylol {
     return compute(ApiResponse.fromJson, {
       'json': resp.data,
       'fromJsonT': MyNoteList.fromJson,
+    });
+  }
+
+  /// 用户信息
+  Future<ApiResponse<Profile>> profile(String uid) async {
+    final resp = await dio().post('/api/mobile/index.php', queryParameters: {
+      'module': 'profile',
+      'uid': uid,
+    });
+
+    return compute(ApiResponse.fromJson, {
+      'json': resp.data,
+      'fromJsonT': Profile.fromJson,
     });
   }
 }

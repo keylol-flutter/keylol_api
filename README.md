@@ -23,6 +23,11 @@
 |pollVote|投票|
 |forumIndex|版块索引，版块分类以及分类下版块|
 |forumDisplay|版块帖子，包含版块信息及子版块|
+|myFavThread|收藏的帖子|
+|favThread|收藏帖子|
+|deleteFavThread|删除收藏的帖子|
+|myNoteList|通知列表|
+|profile|用户信息|
 
 ## 登录流程
 
