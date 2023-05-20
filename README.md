@@ -28,6 +28,7 @@
 |deleteFavThread|删除收藏的帖子|
 |myNoteList|通知列表|
 |profile|用户信息|
+|friend|用户好友|
 
 ## 登录流程
 
