@@ -6,7 +6,7 @@ part 'special_poll.g.dart';
 
 @JsonSerializable()
 class SpecialPoll {
-  @JsonKey(name: 'polloptins')
+  @JsonKey(name: 'polloptions', fromJson: pollOptionsFromList)
   final List<PollOption> pollOptions;
 
   @JsonKey(name: 'expirations', fromJson: stringToInt, toJson: stringFromInt)
@@ -34,4 +34,13 @@ class SpecialPoll {
       _$SpecialPollFromJson(json);
 
   Map<String, dynamic> toJson() => _$SpecialPollToJson(this);
+
+  static List<PollOption> pollOptionsFromList(Map<String, dynamic> json) {
+    final List<PollOption> pollOptions = [];
+    for (var i = 1; i <= json.keys.length; i++) {
+      final Map<String, dynamic> pollOption = json['$i'];
+      pollOptions.add(PollOption.fromJson(pollOption));
+    }
+    return pollOptions;
+  }
 }

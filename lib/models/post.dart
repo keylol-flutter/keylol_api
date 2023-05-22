@@ -32,11 +32,17 @@ class Post {
   @JsonKey(name: 'anonymous')
   final String anonymous;
 
-  @JsonKey(name: 'attachment')
+  @JsonKey(name: 'attachment', fromJson: stringToInt, toJson: stringFromInt)
   final int attachment;
 
   @JsonKey(name: 'status')
   final String status;
+
+  @JsonKey(name: 'replycredit', fromJson: stringToInt, toJson: stringFromInt)
+  final int replyCredit;
+
+  @JsonKey(name: 'position', fromJson: stringToInt, toJson: stringFromInt)
+  final int position;
 
   @JsonKey(name: 'username')
   final String username;
@@ -57,10 +63,13 @@ class Post {
   final String dbDateline;
 
   @JsonKey(name: 'attachments')
-  final Map<String, Attachment> attachments;
+  final Map<String, Attachment>? attachments;
 
   @JsonKey(name: 'imagelist')
-  final List<String> imageList;
+  final List<String>? imageList;
+
+  @JsonKey(name: 'groupiconid')
+  final String groupIconId;
 
   String? _shortMessage;
 
@@ -75,6 +84,8 @@ class Post {
       this.anonymous,
       this.attachment,
       this.status,
+      this.replyCredit,
+      this.position,
       this.username,
       this.adminId,
       this.groupId,
@@ -82,7 +93,8 @@ class Post {
       this.number,
       this.dbDateline,
       this.attachments,
-      this.imageList);
+      this.imageList,
+      this.groupIconId);
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 

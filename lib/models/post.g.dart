@@ -15,18 +15,21 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post(
       json['dateline'] as String,
       json['message'] as String,
       json['anonymous'] as String,
-      json['attachment'] as int,
+      stringToInt(json['attachment'] as String),
       json['status'] as String,
+      stringToInt(json['replycredit'] as String),
+      stringToInt(json['position'] as String),
       json['username'] as String,
       json['adminid'] as String,
       json['groupid'] as String,
       json['memberstatus'] as String,
       stringToInt(json['number'] as String),
       json['dbdateline'] as String,
-      (json['attachments'] as Map<String, dynamic>).map(
+      (json['attachments'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, Attachment.fromJson(e as Map<String, dynamic>)),
       ),
-      (json['imagelist'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['imagelist'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      json['groupiconid'] as String,
     );
 
 Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
@@ -38,8 +41,10 @@ Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'dateline': instance.dateline,
       'message': instance.message,
       'anonymous': instance.anonymous,
-      'attachment': instance.attachment,
+      'attachment': stringFromInt(instance.attachment),
       'status': instance.status,
+      'replycredit': stringFromInt(instance.replyCredit),
+      'position': stringFromInt(instance.position),
       'username': instance.username,
       'adminid': instance.adminId,
       'groupid': instance.groupId,
@@ -48,4 +53,5 @@ Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'dbdateline': instance.dbDateline,
       'attachments': instance.attachments,
       'imagelist': instance.imageList,
+      'groupiconid': instance.groupIconId,
     };

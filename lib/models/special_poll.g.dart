@@ -7,9 +7,8 @@ part of 'special_poll.dart';
 // **************************************************************************
 
 SpecialPoll _$SpecialPollFromJson(Map<String, dynamic> json) => SpecialPoll(
-      (json['polloptins'] as List<dynamic>)
-          .map((e) => PollOption.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      SpecialPoll.pollOptionsFromList(
+          json['polloptions'] as Map<String, dynamic>),
       stringToInt(json['expirations'] as String),
       json['multiple'] as String,
       stringToInt(json['maxchoices'] as String),
@@ -20,7 +19,7 @@ SpecialPoll _$SpecialPollFromJson(Map<String, dynamic> json) => SpecialPoll(
 
 Map<String, dynamic> _$SpecialPollToJson(SpecialPoll instance) =>
     <String, dynamic>{
-      'polloptins': instance.pollOptions,
+      'polloptions': instance.pollOptions,
       'expirations': stringFromInt(instance.expirations),
       'multiple': instance.multiple,
       'maxchoices': stringFromInt(instance.maxChoices),
