@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:keylol_api/keylol.dart';
+import 'package:keylol_api/models/guide.dart';
 import 'package:keylol_api/models/index.dart';
 import 'package:keylol_api/models/login_param.dart';
 import 'package:html/parser.dart';
+import 'package:keylol_api/models/space_reply.dart';
+import 'package:keylol_api/models/space_thread.dart';
 
 /// 模拟网页调用
 extension WebApi on Keylol {
@@ -239,5 +242,49 @@ extension WebApi on Keylol {
     final resp = await dio().get("/");
     return compute(parse, resp.data)
         .then((document) => Index.fromDocument(document));
+  }
+
+  /// 导读
+  Future<Guide> guide(String view, int page) async {
+    final resp = await dio().get('/forum.php', queryParameters: {
+      'mod': 'guide',
+      'view': view,
+      'page': page,
+    });
+    return compute(parse, resp.data)
+        .then((document) => Guide.fromDocument(document));
+  }
+
+  /// 用户发帖
+  Future<SpaceThread> spaceThread(String uid, int page) async {
+    final resp = await dio().get('/home.php', queryParameters: {
+      'mod': 'space',
+      'uid': uid,
+      'do': 'thread',
+      'view': 'me',
+      'from': 'space',
+      'type': 'thread',
+      'page': page,
+    });
+
+    return compute(parse, resp.data)
+        .then((document) => SpaceThread.fromDocument(document));
+  }
+
+  /// 用户回复
+  Future<SpaceReply> spaceReply(String uid, int page) async {
+    final resp = await dio().get('/home.php', queryParameters: {
+      'mod': 'space',
+      'uid': uid,
+      'do': 'thread',
+      'view': 'me',
+      'from': 'space',
+      'type': 'reply',
+      'order': 'dateline',
+      'page': page,
+    });
+
+    return compute(parse, resp.data)
+        .then((document) => SpaceReply.fromDocument(document));
   }
 }

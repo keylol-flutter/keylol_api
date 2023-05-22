@@ -6,11 +6,11 @@ import 'package:keylol_api/models/api_response.dart';
 import 'package:keylol_api/models/check_post.dart';
 import 'package:keylol_api/models/forum_display.dart';
 import 'package:keylol_api/models/forum_index.dart';
-import 'package:keylol_api/models/friend_list.dart';
 import 'package:keylol_api/models/my_fav_thread.dart';
 import 'package:keylol_api/models/my_note_list.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/profile.dart';
+import 'package:keylol_api/models/space_friend.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/view_thread.dart';
 
@@ -235,13 +235,13 @@ extension RestApi on Keylol {
   }
 
   /// 用户好友
-  Future<ApiResponse<FriendList>> friend(String uid, int page) async {
+  Future<ApiResponse<SpaceFriend>> spaceFriend(String uid, int page) async {
     final resp = await dio().post('/api/mobile/index.php',
         queryParameters: {'module': 'friend', 'uid': uid, 'page': page});
 
     return compute(ApiResponse.fromJson, {
       'json': resp.data,
-      'fromJsonT': FriendList.fromJson,
+      'fromJsonT': SpaceFriend.fromJson,
     });
   }
 }

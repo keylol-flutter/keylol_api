@@ -3,17 +3,17 @@ import 'package:keylol_api/models/friend.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/notice.dart';
 
-part 'friend_list.g.dart';
+part 'space_friend.g.dart';
 
 @JsonSerializable()
-class FriendList extends Variables {
+class SpaceFriend extends Variables {
   @JsonKey(name: 'list')
   final List<Friend> list;
 
   @JsonKey(name: 'count')
   final int count;
 
-  FriendList(
+  SpaceFriend(
       super.cookiePre,
       super.auth,
       super.saltKey,
@@ -28,8 +28,8 @@ class FriendList extends Variables {
       this.list,
       this.count);
 
-  factory FriendList.fromJson(Map<String, dynamic> json) =>
-      _$FriendListFromJson(json);
+  factory SpaceFriend.fromJson(Map<String, dynamic> json) =>
+      _$SpaceFriendFromJson(json);
 
-  Map<String, dynamic> toJson() => _$FriendListToJson(this);
+  Map<String, dynamic> toJson() => _$SpaceFriendToJson(this);
 }

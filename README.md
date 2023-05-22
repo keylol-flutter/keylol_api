@@ -1,4 +1,5 @@
-# [其乐](https://keylol.com) API 
+# [其乐](https://keylol.com) API
+
 [![Coverage Status](https://coveralls.io/repos/github/keylol-flutter/keylol_api/badge.svg?branch=main)](https://coveralls.io/github/keylol-flutter/keylol_api?branch=main)
 
 调用Discuz mobile接口,没有相应接口的页面通过爬取网页实现
@@ -28,7 +29,9 @@
 |deleteFavThread|删除收藏的帖子|
 |myNoteList|通知列表|
 |profile|用户信息|
-|friend|用户好友|
+|spaceFriend|用户好友|
+|spaceThread|用户发帖|
+|spaceReply|用户回复|
 
 ## 登录流程
 

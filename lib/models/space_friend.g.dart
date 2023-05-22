@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'friend_list.dart';
+part of 'space_friend.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-FriendList _$FriendListFromJson(Map<String, dynamic> json) => FriendList(
+SpaceFriend _$SpaceFriendFromJson(Map<String, dynamic> json) => SpaceFriend(
       json['cookiepre'] as String,
       json['auth'] as String?,
       json['saltkey'] as String,
@@ -24,7 +24,7 @@ FriendList _$FriendListFromJson(Map<String, dynamic> json) => FriendList(
       json['count'] as int,
     );
 
-Map<String, dynamic> _$FriendListToJson(FriendList instance) =>
+Map<String, dynamic> _$SpaceFriendToJson(SpaceFriend instance) =>
     <String, dynamic>{
       'cookiepre': instance.cookiePre,
       'auth': instance.auth,
