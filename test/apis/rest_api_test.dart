@@ -111,7 +111,7 @@ void main() {
       expect(resp.message?.messageVal != null, true);
     });
 
-    test('should success', () async {
+    test('should success with poll', () async {
       when(mockDio.get(
         '/api/mobile/index.php',
         queryParameters: {
@@ -123,8 +123,8 @@ void main() {
         },
       )).thenAnswer((realInvocation) => Future.value(Response(
             statusCode: 200,
-            data: jsonDecode(
-                File('test_resources/view_thread.json').readAsStringSync()),
+            data: jsonDecode(File('test_resources/view_thread_with_poll.json')
+                .readAsStringSync()),
             requestOptions: RequestOptions(path: '/api/mobile/index.php'),
           )));
 
@@ -132,6 +132,53 @@ void main() {
 
       expect(resp.variables.thread.tid, '888430');
       expect(resp.variables.specialPoll != null, true);
+    });
+
+    test('should success with attachments', () async {
+      when(mockDio.get(
+        '/api/mobile/index.php',
+        queryParameters: {
+          'version': null,
+          'module': 'viewthread',
+          'tid': '890404',
+          'cp': 'all',
+          'page': 1,
+        },
+      )).thenAnswer((realInvocation) => Future.value(Response(
+            statusCode: 200,
+            data: jsonDecode(
+                File('test_resources/view_thread_with_attachments.json')
+                    .readAsStringSync()),
+            requestOptions: RequestOptions(path: '/api/mobile/index.php'),
+          )));
+
+      final resp = await client.viewThread("890404", 1);
+
+      expect(resp.variables.thread.tid, '890404');
+      expect(resp.variables.postList[0].attachments?.isNotEmpty, true);
+    });
+  });
+
+  group('testCheckPost', () {
+    final mockDio = MockDio();
+    final client = Keylol(mockDio);
+
+    test('should success', () async {
+      when(mockDio.get(
+        '/api/mobile/index.php',
+        queryParameters: {
+          'module': 'checkpost',
+        },
+      )).thenAnswer((realInvocation) => Future.value(Response(
+            statusCode: 200,
+            data: jsonDecode(
+                File('test_resources/check_post.json').readAsStringSync()),
+            requestOptions: RequestOptions(path: '/api/mobile/index.php'),
+          )));
+
+      final resp = await client.checkPost();
+
+      expect(resp.variables.allowPerm.allowPost, 0);
     });
   });
 }

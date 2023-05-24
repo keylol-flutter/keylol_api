@@ -42,6 +42,7 @@ extension RestApi on Keylol {
   }
 
   /// 浏览帖子
+  ///
   /// 返回帖子以及回复
   /// postList[0] 为帖子
   /// 不存在时 postList 为空
@@ -63,7 +64,7 @@ extension RestApi on Keylol {
 
   /// 权限
   Future<ApiResponse<CheckPost>> checkPost() async {
-    final resp = await dio().post('/api/mobile/index.php',
+    final resp = await dio().get('/api/mobile/index.php',
         queryParameters: {'module': 'checkpost'});
 
     return compute(ApiResponse.fromJson, {
