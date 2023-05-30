@@ -7,16 +7,16 @@ part of 'forum_index.dart';
 // **************************************************************************
 
 ForumIndex _$ForumIndexFromJson(Map<String, dynamic> json) => ForumIndex(
-      json['cookiepre'] as String,
-      json['auth'] as String?,
-      json['saltkey'] as String,
-      json['member_uid'] as String,
-      json['member_username'] as String,
-      json['member_avatar'] as String,
-      json['groupid'] as String,
-      json['formhash'] as String,
-      json['ismoderator'] as String?,
-      json['readaccess'] as String,
+      const StringConverter().fromJson(json['cookiepre']),
+      const StringConverter().fromJson(json['auth']),
+      const StringConverter().fromJson(json['saltkey']),
+      const StringConverter().fromJson(json['member_uid']),
+      const StringConverter().fromJson(json['member_username']),
+      const StringConverter().fromJson(json['member_avatar']),
+      const StringConverter().fromJson(json['groupid']),
+      const StringConverter().fromJson(json['formhash']),
+      const StringConverter().fromJson(json['ismoderator']),
+      const StringConverter().fromJson(json['readaccess']),
       Notice.fromJson(json['notice'] as Map<String, dynamic>),
       (json['catlist'] as List<dynamic>)
           .map((e) => Cat.fromJson(e as Map<String, dynamic>))
@@ -28,17 +28,26 @@ ForumIndex _$ForumIndexFromJson(Map<String, dynamic> json) => ForumIndex(
 
 Map<String, dynamic> _$ForumIndexToJson(ForumIndex instance) =>
     <String, dynamic>{
-      'cookiepre': instance.cookiePre,
-      'auth': instance.auth,
-      'saltkey': instance.saltKey,
-      'member_uid': instance.memberUid,
-      'member_username': instance.memberUsername,
-      'member_avatar': instance.memberAvatar,
-      'groupid': instance.groupId,
-      'formhash': instance.formHash,
-      'ismoderator': instance.isModerator,
-      'readaccess': instance.readAccess,
+      'cookiepre': const StringConverter().toJson(instance.cookiePre),
+      'auth': _$JsonConverterToJson<dynamic, String>(
+          instance.auth, const StringConverter().toJson),
+      'saltkey': const StringConverter().toJson(instance.saltKey),
+      'member_uid': const StringConverter().toJson(instance.memberUid),
+      'member_username':
+          const StringConverter().toJson(instance.memberUsername),
+      'member_avatar': const StringConverter().toJson(instance.memberAvatar),
+      'groupid': const StringConverter().toJson(instance.groupId),
+      'formhash': const StringConverter().toJson(instance.formHash),
+      'ismoderator': _$JsonConverterToJson<dynamic, String>(
+          instance.isModerator, const StringConverter().toJson),
+      'readaccess': const StringConverter().toJson(instance.readAccess),
       'notice': instance.notice,
       'catlist': instance.catList,
       'forumlist': instance.forumList,
     };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

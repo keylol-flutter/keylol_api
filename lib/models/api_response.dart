@@ -1,11 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/variables.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 import 'message.dart';
 
 part 'api_response.g.dart';
 
-@JsonSerializable(genericArgumentFactories: true)
+@customJsonSerializable
 class ApiResponse<T> {
   @JsonKey(name: 'Charset')
   final String charset;

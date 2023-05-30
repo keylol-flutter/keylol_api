@@ -2,10 +2,11 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/feed_privacy.dart';
 import 'package:keylol_api/models/profile_privacy.dart';
 import 'package:keylol_api/models/view_privacy.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'privacy.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Privacy {
   @JsonKey(name: 'feed')
   final FeedPrivacy feed;

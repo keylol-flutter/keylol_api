@@ -7,15 +7,15 @@ part of 'notice.dart';
 // **************************************************************************
 
 Notice _$NoticeFromJson(Map<String, dynamic> json) => Notice(
-      stringToInt(json['newpush'] as String),
-      stringToInt(json['newpm'] as String),
-      stringToInt(json['newprompt'] as String),
-      stringToInt(json['newmypost'] as String),
+      const IntConverter().fromJson(json['newpush']),
+      const IntConverter().fromJson(json['newpm']),
+      const IntConverter().fromJson(json['newprompt']),
+      const IntConverter().fromJson(json['newmypost']),
     );
 
 Map<String, dynamic> _$NoticeToJson(Notice instance) => <String, dynamic>{
-      'newpush': stringFromInt(instance.newPush),
-      'newpm': stringFromInt(instance.newPm),
-      'newprompt': stringFromInt(instance.newPrompt),
-      'newmypost': stringFromInt(instance.newMyPost),
+      'newpush': const IntConverter().toJson(instance.newPush),
+      'newpm': const IntConverter().toJson(instance.newPm),
+      'newprompt': const IntConverter().toJson(instance.newPrompt),
+      'newmypost': const IntConverter().toJson(instance.newMyPost),
     };

@@ -7,15 +7,15 @@ part of 'allow_perm.dart';
 // **************************************************************************
 
 AllowPerm _$AllowPermFromJson(Map<String, dynamic> json) => AllowPerm(
-      stringToInt(json['allowpost'] as String),
-      stringToInt(json['allowreply'] as String),
+      const IntConverter().fromJson(json['allowpost']),
+      const IntConverter().fromJson(json['allowreply']),
       AllowUpload.fromJson(json['allowupload'] as Map<String, dynamic>),
-      json['uploadhash'] as String,
+      const StringConverter().fromJson(json['uploadhash']),
     );
 
 Map<String, dynamic> _$AllowPermToJson(AllowPerm instance) => <String, dynamic>{
-      'allowpost': stringFromInt(instance.allowPost),
-      'allowreply': stringFromInt(instance.allowReply),
+      'allowpost': const IntConverter().toJson(instance.allowPost),
+      'allowreply': const IntConverter().toJson(instance.allowReply),
       'allowupload': instance.allowUpload,
-      'uploadhash': instance.uploadHash,
+      'uploadhash': const StringConverter().toJson(instance.uploadHash),
     };

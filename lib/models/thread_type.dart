@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'thread_type.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class ThreadType {
   @JsonKey(name: 'type')
   final String type;

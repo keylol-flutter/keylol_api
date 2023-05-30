@@ -7,10 +7,10 @@ part of 'view_privacy.dart';
 // **************************************************************************
 
 ViewPrivacy _$ViewPrivacyFromJson(Map<String, dynamic> json) => ViewPrivacy(
-      stringToInt(json['friend'] as String),
+      const IntConverter().fromJson(json['friend']),
     );
 
 Map<String, dynamic> _$ViewPrivacyToJson(ViewPrivacy instance) =>
     <String, dynamic>{
-      'friend': stringFromInt(instance.friend),
+      'friend': const IntConverter().toJson(instance.friend),
     };

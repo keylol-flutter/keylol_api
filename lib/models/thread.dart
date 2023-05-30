@@ -3,7 +3,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'thread.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Thread {
   // 帖子 id
   @JsonKey(name: 'tid')
@@ -18,9 +18,9 @@ class Thread {
   final String typeId;
   @JsonKey(name: 'sortid')
   final String sortId;
-  @JsonKey(name: 'readperm', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'readperm')
   final int readPerm;
-  @JsonKey(name: 'price', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'price')
   final int price;
 
   // 作者
@@ -48,19 +48,19 @@ class Thread {
   final String lastPoster;
 
   // 查看数
-  @JsonKey(name: 'views', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'views')
   final int views;
 
   // 回复数
-  @JsonKey(name: 'replies', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'replies')
   final int replies;
-  @JsonKey(name: 'displayorder', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'displayorder')
   final int displayOrder;
   @JsonKey(name: 'highlight')
   final String highlight;
 
   // 精华
-  @JsonKey(name: 'digest', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'digest')
   final bool digest;
   @JsonKey(name: 'rate')
   final String rate;
@@ -76,25 +76,25 @@ class Thread {
   final String stickReply;
 
   // 支持数
-  @JsonKey(name: 'recommends', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'recommends')
   final int recommends;
   @JsonKey(name: 'recommend_add')
   final String recommendAdd;
   @JsonKey(name: 'recommend_sub')
   final String recommendSub;
-  @JsonKey(name: 'heats', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'heats')
   final int heats;
   @JsonKey(name: 'status')
   final String status;
-  @JsonKey(name: 'isgroup', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'isgroup')
   final bool isGroup;
 
   // 收藏数
-  @JsonKey(name: 'favtimes', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'favtimes')
   final int favTimes;
 
   // 分享数
-  @JsonKey(name: 'sharetimes', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'sharetimes')
   final int shareTimes;
   @JsonKey(name: 'stamp')
   final String stamp;
@@ -108,13 +108,13 @@ class Thread {
   final String cover;
   @JsonKey(name: 'replycredit')
   final String replyCredit;
-  @JsonKey(name: 'maxposition', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'maxposition')
   final int maxPosition;
   @JsonKey(name: 'bgcolor')
   final String bgColor;
-  @JsonKey(name: 'comments', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'comments')
   final int comments;
-  @JsonKey(name: 'hidden', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'hidden')
   final bool hidden;
   @JsonKey(name: 'linksubmit')
   final String linkSubmit;
@@ -122,11 +122,11 @@ class Thread {
   final String threadTable;
   @JsonKey(name: 'threadtableid')
   final String threadTableId;
-  @JsonKey(name: 'addviews', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'addviews')
   final int addViews;
-  @JsonKey(name: 'allreplies', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'allreplies')
   final int allReplies;
-  @JsonKey(name: 'is_archived', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'is_archived')
   final bool isArchived;
   @JsonKey(name: 'subjectenc')
   final String subjectEnc;

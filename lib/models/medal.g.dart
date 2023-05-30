@@ -7,15 +7,15 @@ part of 'medal.dart';
 // **************************************************************************
 
 Medal _$MedalFromJson(Map<String, dynamic> json) => Medal(
-      json['name'] as String,
-      json['image'] as String,
-      json['description'] as String,
-      json['medalid'] as String,
+      const StringConverter().fromJson(json['name']),
+      const StringConverter().fromJson(json['image']),
+      const StringConverter().fromJson(json['description']),
+      const StringConverter().fromJson(json['medalid']),
     );
 
 Map<String, dynamic> _$MedalToJson(Medal instance) => <String, dynamic>{
-      'name': instance.name,
-      'image': instance.image,
-      'description': instance.description,
-      'medalid': instance.medalId,
+      'name': const StringConverter().toJson(instance.name),
+      'image': const StringConverter().toJson(instance.image),
+      'description': const StringConverter().toJson(instance.description),
+      'medalid': const StringConverter().toJson(instance.medalId),
     };

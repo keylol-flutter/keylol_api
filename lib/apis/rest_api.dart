@@ -1,18 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:keylol_api/keylol.dart';
-import 'package:keylol_api/models/api_response.dart';
-import 'package:keylol_api/models/check_post.dart';
-import 'package:keylol_api/models/forum_display.dart';
-import 'package:keylol_api/models/forum_index.dart';
-import 'package:keylol_api/models/my_fav_thread.dart';
-import 'package:keylol_api/models/my_note_list.dart';
-import 'package:keylol_api/models/post.dart';
-import 'package:keylol_api/models/profile.dart';
-import 'package:keylol_api/models/space_friend.dart';
-import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/view_thread.dart';
+part of '../keylol.dart';
 
 /// api 调用
 extension RestApi on Keylol {
@@ -64,8 +50,8 @@ extension RestApi on Keylol {
 
   /// 权限
   Future<ApiResponse<CheckPost>> checkPost() async {
-    final resp = await dio().get('/api/mobile/index.php',
-        queryParameters: {'module': 'checkpost'});
+    final resp = await dio()
+        .get('/api/mobile/index.php', queryParameters: {'module': 'checkpost'});
 
     return compute(ApiResponse.fromJson, {
       'json': resp.data,
@@ -223,7 +209,7 @@ extension RestApi on Keylol {
   }
 
   /// 用户信息
-  Future<ApiResponse<Profile>> profile(String uid) async {
+  Future<ApiResponse<Profile>> profile(String? uid) async {
     final resp = await dio().post('/api/mobile/index.php', queryParameters: {
       'module': 'profile',
       'uid': uid,

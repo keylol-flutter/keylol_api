@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/notice.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'variables.g.dart';
 
@@ -51,7 +52,7 @@ abstract class Variables {
       this.notice);
 }
 
-@JsonSerializable()
+@customJsonSerializable
 class DefaultVariables extends Variables {
   DefaultVariables(
       super.cookiePre,

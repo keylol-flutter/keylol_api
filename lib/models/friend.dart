@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'friend.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Friend {
   @JsonKey(name: 'uid')
   final String uid;

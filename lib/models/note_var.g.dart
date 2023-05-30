@@ -7,17 +7,17 @@ part of 'note_var.dart';
 // **************************************************************************
 
 NoteVar _$NoteVarFromJson(Map<String, dynamic> json) => NoteVar(
-      json['tid'] as String,
-      json['pid'] as String,
-      json['subject'] as String,
-      json['actoruid'] as String,
-      json['actorusername'] as String,
+      const StringConverter().fromJson(json['tid']),
+      const StringConverter().fromJson(json['pid']),
+      const StringConverter().fromJson(json['subject']),
+      const StringConverter().fromJson(json['actoruid']),
+      const StringConverter().fromJson(json['actorusername']),
     );
 
 Map<String, dynamic> _$NoteVarToJson(NoteVar instance) => <String, dynamic>{
-      'tid': instance.tid,
-      'pid': instance.pid,
-      'subject': instance.subject,
-      'actoruid': instance.actorUid,
-      'actorusername': instance.actorUsername,
+      'tid': const StringConverter().toJson(instance.tid),
+      'pid': const StringConverter().toJson(instance.pid),
+      'subject': const StringConverter().toJson(instance.subject),
+      'actoruid': const StringConverter().toJson(instance.actorUid),
+      'actorusername': const StringConverter().toJson(instance.actorUsername),
     };

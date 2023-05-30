@@ -6,7 +6,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'space.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Space {
   @JsonKey(name: 'uid')
   final String uid;
@@ -14,17 +14,16 @@ class Space {
   @JsonKey(name: 'username')
   final String username;
 
-  @JsonKey(name: 'status', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'status')
   final int status;
 
-  @JsonKey(name: 'emailstatus', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'emailstatus')
   final int emailStatus;
 
-  @JsonKey(name: 'avatarstatus', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'avatarstatus')
   final int avatarStatus;
 
-  @JsonKey(
-      name: 'videophotostatus', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'videophotostatus')
   final int videoPhotoStatus;
 
   @JsonKey(name: 'adminid')
@@ -42,7 +41,7 @@ class Space {
   @JsonKey(name: 'regdate')
   final String regDate;
 
-  @JsonKey(name: 'credits', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'credits')
   final int credits;
 
   @JsonKey(name: 'notifysound')
@@ -51,21 +50,19 @@ class Space {
   @JsonKey(name: 'timeoffset')
   final int timeOffset;
 
-  @JsonKey(name: 'newpm', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newpm')
   final int newPm;
 
-  @JsonKey(name: 'newprompt', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newprompt')
   final int newPrompt;
 
-  @JsonKey(name: 'accessmasks', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'accessmasks')
   final int accessMasks;
 
   @JsonKey(name: 'allowadmincp')
   final String allowAdminCp;
 
-  @JsonKey(name: 'onlyacceptfriendpm',
-      fromJson: stringToBool,
-      toJson: stringFromBool)
+  @JsonKey(name: 'onlyacceptfriendpm')
   final bool onlyAcceptFriendPm;
 
   @JsonKey(name: 'conisbind')
@@ -77,79 +74,79 @@ class Space {
   @JsonKey(name: 'self')
   final String self;
 
-  @JsonKey(name: 'extcredits1', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits1')
   final int extCredits1;
 
-  @JsonKey(name: 'extcredits2', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits2')
   final int extCredits2;
 
-  @JsonKey(name: 'extcredits3', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits3')
   final int extCredits3;
 
-  @JsonKey(name: 'extcredits4', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits4')
   final int extCredits4;
 
-  @JsonKey(name: 'extcredits5', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits5')
   final int extCredits5;
 
-  @JsonKey(name: 'extcredits6', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits6')
   final int extCredits6;
 
-  @JsonKey(name: 'extcredits7', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits7')
   final int extCredits7;
 
-  @JsonKey(name: 'extcredits8', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'extcredits8')
   final int extCredits8;
 
-  @JsonKey(name: 'friends', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'friends')
   final int friends;
 
-  @JsonKey(name: 'threads', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'threads')
   final int threads;
 
-  @JsonKey(name: 'digestPosts', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'digestPosts')
   final int digestPosts;
 
-  @JsonKey(name: 'doings', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'doings')
   final int doings;
 
-  @JsonKey(name: 'blogs', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'blogs')
   final int blogs;
 
-  @JsonKey(name: 'albums', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'albums')
   final int albums;
 
-  @JsonKey(name: 'sharing', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'sharing')
   final int sharings;
 
   @JsonKey(name: 'attachsize')
   final String attachSize;
 
-  @JsonKey(name: 'views', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'views')
   final int views;
 
   @JsonKey(name: 'oltime')
   final String olTime;
 
-  @JsonKey(name: 'todayattachs', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'todayattachs')
   final int todayAttachs;
 
   @JsonKey(name: 'todayattachsize')
   final String todayAttachSize;
 
-  @JsonKey(name: 'feeds', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'feeds')
   final int feeds;
 
-  @JsonKey(name: 'follower', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'follower')
   final int follower;
 
-  @JsonKey(name: 'following', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'following')
   final int following;
 
-  @JsonKey(name: 'newfollower', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newfollower')
   final int newFollower;
 
-  @JsonKey(name: 'blacklist', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'blacklist')
   final int blacklist;
 
   @JsonKey(name: 'videophoto')
@@ -200,10 +197,10 @@ class Space {
   @JsonKey(name: 'stickblogs')
   final String stickBlogs;
 
-  @JsonKey(name: 'publishfeed', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'publishfeed')
   final int publishFeed;
 
-  @JsonKey(name: 'customShow', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'customShow')
   final int customShow;
 
   @JsonKey(name: 'customStatus')
@@ -227,16 +224,16 @@ class Space {
   @JsonKey(name: 'attentiongroup')
   final String attentionGroup;
 
-  @JsonKey(name: 'gender', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'gender')
   final int gender;
 
-  @JsonKey(name: 'birthyear', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'birthyear')
   final int birthYear;
 
-  @JsonKey(name: 'birthmonth', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'birthmonth')
   final int brithMonth;
 
-  @JsonKey(name: 'birthday', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'birthday')
   final int birthday;
 
   @JsonKey(name: 'consellation')
@@ -395,38 +392,135 @@ class Space {
   @JsonKey(name: 'groupiconid')
   final String groupIconId;
 
-  Space(this.uid, this.username, this.status, this.emailStatus,
-      this.avatarStatus, this.videoPhotoStatus, this.adminId, this.groupId,
-      this.groupExpiry, this.extGroupIds, this.regDate, this.credits,
-      this.notifySound, this.timeOffset, this.newPm, this.newPrompt,
-      this.accessMasks, this.allowAdminCp, this.onlyAcceptFriendPm,
-      this.conisbind, this.freeze, this.self, this.extCredits1,
-      this.extCredits2, this.extCredits3, this.extCredits4, this.extCredits5,
-      this.extCredits6, this.extCredits7, this.extCredits8, this.friends,
-      this.threads, this.digestPosts, this.doings, this.blogs, this.albums,
-      this.sharings, this.attachSize, this.views, this.olTime,
-      this.todayAttachs, this.todayAttachSize, this.feeds, this.follower,
-      this.following, this.newFollower, this.blacklist, this.videoPhoto,
-      this.spaceName, this.sapceDescription, this.domain, this.addSize,
-      this.addFriend, this.menunum, this.theme, this.spaceCss,
-      this.blockPosition, this.recentNote, this.privacy, this.feedFriend,
-      this.acceptEmail, this.magicGift, this.stickBlogs, this.publishFeed,
-      this.customShow, this.customStatus, this.medals, this.signHtml,
-      this.groupTerms, this.authStr, this.groups, this.attentionGroup,
-      this.gender, this.birthYear, this.brithMonth, this.birthday,
-      this.consellation, this.zodiac, this.nationality, this.birthProvince,
-      this.birthCity, this.birthDist, this.birthCommunity, this.resideProvince,
-      this.resideCity, this.resideCommunity, this.resideSuite,
-      this.graduateSchool, this.company, this.education, this.occupation,
-      this.position, this.revenue, this.affectiveStatus, this.lookingFor,
-      this.bloodType, this.height, this.weight, this.site, this.bio,
-      this.interest, this.field1, this.field2, this.field3, this.field4,
-      this.field5, this.field6, this.field7, this.field8, this.regPort,
-      this.port, this.lastVisit, this.lastActivity, this.lastPost,
-      this.lastSendEmail, this.invisible, this.buyerCredit, this.sellerCredit,
-      this.favTimes, this.shareTimes, this.profileProgress, this.adminGroup,
-      this.group, this.lastActivityDb, this.lastIpLocProvince, this.buyerRank,
-      this.sellerRank, this.groupIconId);
+  Space(
+      this.uid,
+      this.username,
+      this.status,
+      this.emailStatus,
+      this.avatarStatus,
+      this.videoPhotoStatus,
+      this.adminId,
+      this.groupId,
+      this.groupExpiry,
+      this.extGroupIds,
+      this.regDate,
+      this.credits,
+      this.notifySound,
+      this.timeOffset,
+      this.newPm,
+      this.newPrompt,
+      this.accessMasks,
+      this.allowAdminCp,
+      this.onlyAcceptFriendPm,
+      this.conisbind,
+      this.freeze,
+      this.self,
+      this.extCredits1,
+      this.extCredits2,
+      this.extCredits3,
+      this.extCredits4,
+      this.extCredits5,
+      this.extCredits6,
+      this.extCredits7,
+      this.extCredits8,
+      this.friends,
+      this.threads,
+      this.digestPosts,
+      this.doings,
+      this.blogs,
+      this.albums,
+      this.sharings,
+      this.attachSize,
+      this.views,
+      this.olTime,
+      this.todayAttachs,
+      this.todayAttachSize,
+      this.feeds,
+      this.follower,
+      this.following,
+      this.newFollower,
+      this.blacklist,
+      this.videoPhoto,
+      this.spaceName,
+      this.sapceDescription,
+      this.domain,
+      this.addSize,
+      this.addFriend,
+      this.menunum,
+      this.theme,
+      this.spaceCss,
+      this.blockPosition,
+      this.recentNote,
+      this.privacy,
+      this.feedFriend,
+      this.acceptEmail,
+      this.magicGift,
+      this.stickBlogs,
+      this.publishFeed,
+      this.customShow,
+      this.customStatus,
+      this.medals,
+      this.signHtml,
+      this.groupTerms,
+      this.authStr,
+      this.groups,
+      this.attentionGroup,
+      this.gender,
+      this.birthYear,
+      this.brithMonth,
+      this.birthday,
+      this.consellation,
+      this.zodiac,
+      this.nationality,
+      this.birthProvince,
+      this.birthCity,
+      this.birthDist,
+      this.birthCommunity,
+      this.resideProvince,
+      this.resideCity,
+      this.resideCommunity,
+      this.resideSuite,
+      this.graduateSchool,
+      this.company,
+      this.education,
+      this.occupation,
+      this.position,
+      this.revenue,
+      this.affectiveStatus,
+      this.lookingFor,
+      this.bloodType,
+      this.height,
+      this.weight,
+      this.site,
+      this.bio,
+      this.interest,
+      this.field1,
+      this.field2,
+      this.field3,
+      this.field4,
+      this.field5,
+      this.field6,
+      this.field7,
+      this.field8,
+      this.regPort,
+      this.port,
+      this.lastVisit,
+      this.lastActivity,
+      this.lastPost,
+      this.lastSendEmail,
+      this.invisible,
+      this.buyerCredit,
+      this.sellerCredit,
+      this.favTimes,
+      this.shareTimes,
+      this.profileProgress,
+      this.adminGroup,
+      this.group,
+      this.lastActivityDb,
+      this.lastIpLocProvince,
+      this.buyerRank,
+      this.sellerRank,
+      this.groupIconId);
 
   factory Space.fromJson(Map<String, dynamic> json) => _$SpaceFromJson(json);
 

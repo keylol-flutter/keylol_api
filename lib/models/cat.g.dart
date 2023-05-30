@@ -7,13 +7,15 @@ part of 'cat.dart';
 // **************************************************************************
 
 Cat _$CatFromJson(Map<String, dynamic> json) => Cat(
-      json['fid'] as String,
-      json['name'] as String,
-      (json['forums'] as List<dynamic>).map((e) => e as String).toList(),
+      const StringConverter().fromJson(json['fid']),
+      const StringConverter().fromJson(json['name']),
+      (json['forums'] as List<dynamic>)
+          .map(const StringConverter().fromJson)
+          .toList(),
     );
 
 Map<String, dynamic> _$CatToJson(Cat instance) => <String, dynamic>{
-      'fid': instance.fid,
-      'name': instance.name,
-      'forums': instance.forums,
+      'fid': const StringConverter().toJson(instance.fid),
+      'name': const StringConverter().toJson(instance.name),
+      'forums': instance.forums.map(const StringConverter().toJson).toList(),
     };

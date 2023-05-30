@@ -3,7 +3,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'forum.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Forum {
   @JsonKey(name: 'fid')
   final String fid;
@@ -17,13 +17,13 @@ class Forum {
   @JsonKey(name: 'rule')
   final String rule;
 
-  @JsonKey(name: 'threads', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'threads')
   final int threads;
 
-  @JsonKey(name: 'posts', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'posts')
   final int posts;
 
-  @JsonKey(name: 'todayposts', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'todayposts')
   final int todayPosts;
 
   @JsonKey(name: 'description')

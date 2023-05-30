@@ -7,23 +7,23 @@ part of 'forum.dart';
 // **************************************************************************
 
 Forum _$ForumFromJson(Map<String, dynamic> json) => Forum(
-      json['fid'] as String,
-      json['fup'] as String,
-      json['name'] as String,
-      json['rule'] as String,
-      stringToInt(json['threads'] as String),
-      stringToInt(json['posts'] as String),
-      stringToInt(json['todayposts'] as String),
-      json['description'] as String,
+      const StringConverter().fromJson(json['fid']),
+      const StringConverter().fromJson(json['fup']),
+      const StringConverter().fromJson(json['name']),
+      const StringConverter().fromJson(json['rule']),
+      const IntConverter().fromJson(json['threads']),
+      const IntConverter().fromJson(json['posts']),
+      const IntConverter().fromJson(json['todayposts']),
+      const StringConverter().fromJson(json['description']),
     );
 
 Map<String, dynamic> _$ForumToJson(Forum instance) => <String, dynamic>{
-      'fid': instance.fid,
-      'fup': instance.fup,
-      'name': instance.name,
-      'rule': instance.rule,
-      'threads': stringFromInt(instance.threads),
-      'posts': stringFromInt(instance.posts),
-      'todayposts': stringFromInt(instance.todayPosts),
-      'description': instance.description,
+      'fid': const StringConverter().toJson(instance.fid),
+      'fup': const StringConverter().toJson(instance.fup),
+      'name': const StringConverter().toJson(instance.name),
+      'rule': const StringConverter().toJson(instance.rule),
+      'threads': const IntConverter().toJson(instance.threads),
+      'posts': const IntConverter().toJson(instance.posts),
+      'todayposts': const IntConverter().toJson(instance.todayPosts),
+      'description': const StringConverter().toJson(instance.description),
     };

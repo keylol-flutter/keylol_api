@@ -11,12 +11,12 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     ApiResponse<T>(
-      json['Charset'] as String,
+      const StringConverter().fromJson(json['Charset']),
       fromJsonT(json['Variables']),
       json['Message'] == null
           ? null
           : Message.fromJson(json['Message'] as Map<String, dynamic>),
-      json['Version'] as String,
+      const StringConverter().fromJson(json['Version']),
     );
 
 Map<String, dynamic> _$ApiResponseToJson<T>(
@@ -24,8 +24,8 @@ Map<String, dynamic> _$ApiResponseToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'Charset': instance.charset,
+      'Charset': const StringConverter().toJson(instance.charset),
       'Variables': toJsonT(instance.variables),
       'Message': instance.message,
-      'Version': instance.version,
+      'Version': const StringConverter().toJson(instance.version),
     };

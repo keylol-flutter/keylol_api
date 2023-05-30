@@ -4,10 +4,11 @@ import 'package:keylol_api/models/thread.dart';
 import 'package:keylol_api/models/thread_type.dart';
 import 'package:keylol_api/models/variables.dart';
 import 'package:keylol_api/models/notice.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'forum_display.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class ForumDisplay extends Variables {
   @JsonKey(name: 'forum')
   final Forum forum;
@@ -18,7 +19,7 @@ class ForumDisplay extends Variables {
   @JsonKey(name: 'sublist')
   final List<Forum> subList;
 
-  @JsonKey(name: 'threadtypes', fromJson: threadTypesFromJson)
+  @JsonKey(name: 'threadtypes')
   final List<ThreadType> threadTypes;
 
   ForumDisplay(

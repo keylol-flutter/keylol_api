@@ -4,7 +4,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'group.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Group {
   @JsonKey(name: 'type')
   final String type;
@@ -12,11 +12,11 @@ class Group {
   @JsonKey(name: 'groupTitle')
   final String groupTitle;
 
-  @JsonKey(name: 'stars', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'stars')
   final int stars;
 
-  @JsonKey(name: 'color', fromJson: stringToColor, toJson: stringFromColor)
-  final Color color;
+  @JsonKey(name: 'color')
+  final Color? color;
 
   @JsonKey(name: 'icon')
   final String icon;

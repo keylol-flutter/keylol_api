@@ -4,7 +4,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'note.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Note {
   @JsonKey(name: 'id')
   final String id;
@@ -15,13 +15,13 @@ class Note {
   @JsonKey(name: 'type')
   final String type;
 
-  @JsonKey(name: 'new', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'new')
   final bool isNew;
 
   @JsonKey(name: 'authorid')
   final String authorId;
 
-  @JsonKey(name: 'author', defaultValue: '')
+  @JsonKey(name: 'author')
   final String author;
 
   @JsonKey(name: 'note')
@@ -33,7 +33,7 @@ class Note {
   @JsonKey(name: 'fromid')
   final String fromId;
 
-  @JsonKey(name: 'fromidtype', defaultValue: '')
+  @JsonKey(name: 'fromidtype')
   final String fromIdType;
 
   @JsonKey(name: 'fromnum')

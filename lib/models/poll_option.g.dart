@@ -7,20 +7,20 @@ part of 'poll_option.dart';
 // **************************************************************************
 
 PollOption _$PollOptionFromJson(Map<String, dynamic> json) => PollOption(
-      json['polloptionid'] as String,
-      json['polloption'] as String,
-      stringToInt(json['votes'] as String),
-      json['width'] as String,
-      stringToDouble(json['percent'] as String),
-      json['color'] as String,
+      const StringConverter().fromJson(json['polloptionid']),
+      const StringConverter().fromJson(json['polloption']),
+      const IntConverter().fromJson(json['votes']),
+      const StringConverter().fromJson(json['width']),
+      const DoubleConverter().fromJson(json['percent']),
+      const StringConverter().fromJson(json['color']),
     );
 
 Map<String, dynamic> _$PollOptionToJson(PollOption instance) =>
     <String, dynamic>{
-      'polloptionid': instance.pollOptionId,
-      'polloption': instance.pollOption,
-      'votes': stringFromInt(instance.votes),
-      'width': instance.width,
-      'percent': stringFromDouble(instance.percent),
-      'color': instance.color,
+      'polloptionid': const StringConverter().toJson(instance.pollOptionId),
+      'polloption': const StringConverter().toJson(instance.pollOption),
+      'votes': const IntConverter().toJson(instance.votes),
+      'width': const StringConverter().toJson(instance.width),
+      'percent': const DoubleConverter().toJson(instance.percent),
+      'color': const StringConverter().toJson(instance.color),
     };

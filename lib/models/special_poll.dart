@@ -4,27 +4,27 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'special_poll.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class SpecialPoll {
   @JsonKey(name: 'polloptions', fromJson: pollOptionsFromList)
   final List<PollOption> pollOptions;
 
-  @JsonKey(name: 'expirations', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'expirations')
   final int expirations;
 
   @JsonKey(name: 'multiple')
   final String multiple;
 
-  @JsonKey(name: 'maxchoices', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'maxchoices')
   final int maxChoices;
 
-  @JsonKey(name: 'voterscount', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'voterscount')
   final int votersCount;
 
-  @JsonKey(name: 'visiblepoll', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'visiblepoll')
   final int visiblePoll;
 
-  @JsonKey(name: 'allowvote', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'allowvote')
   final bool allowVote;
 
   SpecialPoll(this.pollOptions, this.expirations, this.multiple,

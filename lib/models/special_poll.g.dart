@@ -9,21 +9,21 @@ part of 'special_poll.dart';
 SpecialPoll _$SpecialPollFromJson(Map<String, dynamic> json) => SpecialPoll(
       SpecialPoll.pollOptionsFromList(
           json['polloptions'] as Map<String, dynamic>),
-      stringToInt(json['expirations'] as String),
-      json['multiple'] as String,
-      stringToInt(json['maxchoices'] as String),
-      stringToInt(json['voterscount'] as String),
-      stringToInt(json['visiblepoll'] as String),
-      stringToBool(json['allowvote'] as String),
+      const IntConverter().fromJson(json['expirations']),
+      const StringConverter().fromJson(json['multiple']),
+      const IntConverter().fromJson(json['maxchoices']),
+      const IntConverter().fromJson(json['voterscount']),
+      const IntConverter().fromJson(json['visiblepoll']),
+      const BoolConverter().fromJson(json['allowvote']),
     );
 
 Map<String, dynamic> _$SpecialPollToJson(SpecialPoll instance) =>
     <String, dynamic>{
       'polloptions': instance.pollOptions,
-      'expirations': stringFromInt(instance.expirations),
-      'multiple': instance.multiple,
-      'maxchoices': stringFromInt(instance.maxChoices),
-      'voterscount': stringFromInt(instance.votersCount),
-      'visiblepoll': stringFromInt(instance.visiblePoll),
-      'allowvote': stringFromBool(instance.allowVote),
+      'expirations': const IntConverter().toJson(instance.expirations),
+      'multiple': const StringConverter().toJson(instance.multiple),
+      'maxchoices': const IntConverter().toJson(instance.maxChoices),
+      'voterscount': const IntConverter().toJson(instance.votersCount),
+      'visiblepoll': const IntConverter().toJson(instance.visiblePoll),
+      'allowvote': const BoolConverter().toJson(instance.allowVote),
     };

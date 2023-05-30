@@ -6,7 +6,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'post.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Post {
   @JsonKey(name: 'pid')
   final String pid;
@@ -14,7 +14,7 @@ class Post {
   @JsonKey(name: 'tid')
   final String tid;
 
-  @JsonKey(name: 'first', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'first')
   final bool first;
 
   @JsonKey(name: 'author')
@@ -32,16 +32,16 @@ class Post {
   @JsonKey(name: 'anonymous')
   final String anonymous;
 
-  @JsonKey(name: 'attachment', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'attachment')
   final int attachment;
 
   @JsonKey(name: 'status')
   final String status;
 
-  @JsonKey(name: 'replycredit', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'replycredit')
   final int replyCredit;
 
-  @JsonKey(name: 'position', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'position')
   final int position;
 
   @JsonKey(name: 'username')
@@ -56,7 +56,7 @@ class Post {
   @JsonKey(name: 'memberstatus')
   final String memberStatus;
 
-  @JsonKey(name: 'number', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'number')
   final int number;
 
   @JsonKey(name: 'dbdateline')

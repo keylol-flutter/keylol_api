@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'note_var.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class NoteVar {
   @JsonKey(name: 'tid')
   final String tid;

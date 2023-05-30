@@ -7,14 +7,14 @@ part of 'thread_type.dart';
 // **************************************************************************
 
 ThreadType _$ThreadTypeFromJson(Map<String, dynamic> json) => ThreadType(
-      json['type'] as String,
-      json['name'] as String,
-      json['icon'] as String,
+      const StringConverter().fromJson(json['type']),
+      const StringConverter().fromJson(json['name']),
+      const StringConverter().fromJson(json['icon']),
     );
 
 Map<String, dynamic> _$ThreadTypeToJson(ThreadType instance) =>
     <String, dynamic>{
-      'type': instance.type,
-      'name': instance.name,
-      'icon': instance.icon,
+      'type': const StringConverter().toJson(instance.type),
+      'name': const StringConverter().toJson(instance.name),
+      'icon': const StringConverter().toJson(instance.icon),
     };

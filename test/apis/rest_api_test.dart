@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:keylol_api/apis/rest_api.dart';
 import 'package:keylol_api/keylol.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

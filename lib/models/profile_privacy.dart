@@ -3,55 +3,54 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'profile_privacy.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class ProfilePrivacy {
-  @JsonKey(name: 'realname', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'realname')
   final int realName;
 
-  @JsonKey(name: 'gender', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'gender')
   final int gender;
 
-  @JsonKey(name: 'birthday', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'birthday')
   final int birthday;
 
-  @JsonKey(name: 'residecity', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'residecity')
   final int resideCity;
 
-  @JsonKey(
-      name: 'affectivestatus', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'affectivestatus')
   final int affectiveStatus;
 
-  @JsonKey(name: 'lookingfor', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'lookingfor')
   final int lookingFor;
 
-  @JsonKey(name: 'bloodtype', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'bloodtype')
   final int bloodType;
 
-  @JsonKey(name: 'education', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'education')
   final int education;
 
-  @JsonKey(name: 'graduateSchool', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'graduateSchool')
   final int graduateSchool;
 
-  @JsonKey(name: 'bio', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'bio')
   final int bio;
 
-  @JsonKey(name: 'site', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'site')
   final int site;
 
-  @JsonKey(name: 'idCard', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'idCard')
   final int idCard;
 
-  @JsonKey(name: 'address', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'address')
   final int address;
 
-  @JsonKey(name: 'zipcode', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'zipcode')
   final int zipCode;
 
-  @JsonKey(name: 'interest', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'interest')
   final int interest;
 
-  @JsonKey(name: 'idcardtype', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'idcardtype')
   final int idCardType;
 
   ProfilePrivacy(

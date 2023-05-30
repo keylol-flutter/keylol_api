@@ -3,7 +3,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'fav_thread.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class FavThread {
   @JsonKey(name: 'favid')
   final String favId;
@@ -35,15 +35,28 @@ class FavThread {
   @JsonKey(name: 'url')
   final String url;
 
-  @JsonKey(name: 'replies', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'replies')
   final int replies;
 
   @JsonKey(name: 'author')
   final String author;
 
-  FavThread(this.favId, this.uid, this.id, this.idType, this.spaceUid, this.title, this.description, this.dateline, this.icon, this.url, this.replies, this.author);
+  FavThread(
+      this.favId,
+      this.uid,
+      this.id,
+      this.idType,
+      this.spaceUid,
+      this.title,
+      this.description,
+      this.dateline,
+      this.icon,
+      this.url,
+      this.replies,
+      this.author);
 
-  factory FavThread.fromJson(Map<String, dynamic> json) => _$FavThreadFromJson(json);
+  factory FavThread.fromJson(Map<String, dynamic> json) =>
+      _$FavThreadFromJson(json);
 
   Map<String, dynamic> toJson() => _$FavThreadToJson(this);
 }

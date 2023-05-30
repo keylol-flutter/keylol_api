@@ -7,38 +7,47 @@ part of 'my_fav_thread.dart';
 // **************************************************************************
 
 MyFavThread _$MyFavThreadFromJson(Map<String, dynamic> json) => MyFavThread(
-      json['cookiepre'] as String,
-      json['auth'] as String?,
-      json['saltkey'] as String,
-      json['member_uid'] as String,
-      json['member_username'] as String,
-      json['member_avatar'] as String,
-      json['groupid'] as String,
-      json['formhash'] as String,
-      json['ismoderator'] as String?,
-      json['readaccess'] as String,
+      const StringConverter().fromJson(json['cookiepre']),
+      const StringConverter().fromJson(json['auth']),
+      const StringConverter().fromJson(json['saltkey']),
+      const StringConverter().fromJson(json['member_uid']),
+      const StringConverter().fromJson(json['member_username']),
+      const StringConverter().fromJson(json['member_avatar']),
+      const StringConverter().fromJson(json['groupid']),
+      const StringConverter().fromJson(json['formhash']),
+      const StringConverter().fromJson(json['ismoderator']),
+      const StringConverter().fromJson(json['readaccess']),
       Notice.fromJson(json['notice'] as Map<String, dynamic>),
       (json['list'] as List<dynamic>)
           .map((e) => FavThread.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['perpage'] as int,
-      json['c'] as int,
+      const IntConverter().fromJson(json['perpage']),
+      const IntConverter().fromJson(json['c']),
     );
 
 Map<String, dynamic> _$MyFavThreadToJson(MyFavThread instance) =>
     <String, dynamic>{
-      'cookiepre': instance.cookiePre,
-      'auth': instance.auth,
-      'saltkey': instance.saltKey,
-      'member_uid': instance.memberUid,
-      'member_username': instance.memberUsername,
-      'member_avatar': instance.memberAvatar,
-      'groupid': instance.groupId,
-      'formhash': instance.formHash,
-      'ismoderator': instance.isModerator,
-      'readaccess': instance.readAccess,
+      'cookiepre': const StringConverter().toJson(instance.cookiePre),
+      'auth': _$JsonConverterToJson<dynamic, String>(
+          instance.auth, const StringConverter().toJson),
+      'saltkey': const StringConverter().toJson(instance.saltKey),
+      'member_uid': const StringConverter().toJson(instance.memberUid),
+      'member_username':
+          const StringConverter().toJson(instance.memberUsername),
+      'member_avatar': const StringConverter().toJson(instance.memberAvatar),
+      'groupid': const StringConverter().toJson(instance.groupId),
+      'formhash': const StringConverter().toJson(instance.formHash),
+      'ismoderator': _$JsonConverterToJson<dynamic, String>(
+          instance.isModerator, const StringConverter().toJson),
+      'readaccess': const StringConverter().toJson(instance.readAccess),
       'notice': instance.notice,
       'list': instance.list,
-      'perpage': instance.perPage,
-      'c': instance.count,
+      'perpage': const IntConverter().toJson(instance.perPage),
+      'c': const IntConverter().toJson(instance.count),
     };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

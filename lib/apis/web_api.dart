@@ -1,12 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:keylol_api/keylol.dart';
-import 'package:keylol_api/models/guide.dart';
-import 'package:keylol_api/models/index.dart';
-import 'package:keylol_api/models/login_param.dart';
-import 'package:html/parser.dart';
-import 'package:keylol_api/models/space_reply.dart';
-import 'package:keylol_api/models/space_thread.dart';
+part of '../keylol.dart';
 
 /// 模拟网页调用
 extension WebApi on Keylol {

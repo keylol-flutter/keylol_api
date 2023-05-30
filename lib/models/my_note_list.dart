@@ -6,18 +6,18 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'my_note_list.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class MyNoteList extends Variables {
   @JsonKey(name: 'list')
   final List<Note> list;
 
-  @JsonKey(name: 'count', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'count')
   final int count;
 
-  @JsonKey(name: 'perpage', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'perpage')
   final int perPage;
 
-  @JsonKey(name: 'page', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'page')
   final int page;
 
   MyNoteList(

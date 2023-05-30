@@ -7,26 +7,26 @@ part of 'allow_upload.dart';
 // **************************************************************************
 
 AllowUpload _$AllowUploadFromJson(Map<String, dynamic> json) => AllowUpload(
-      stringToInt(json['jpg'] as String),
-      stringToInt(json['jpeg'] as String),
-      stringToInt(json['gif'] as String),
-      stringToInt(json['png'] as String),
-      stringToInt(json['mp3'] as String),
-      stringToInt(json['txt'] as String),
-      stringToInt(json['zip'] as String),
-      stringToInt(json['rar'] as String),
-      stringToInt(json['pdf'] as String),
+      const IntConverter().fromJson(json['jpg']),
+      const IntConverter().fromJson(json['jpeg']),
+      const IntConverter().fromJson(json['gif']),
+      const IntConverter().fromJson(json['png']),
+      const IntConverter().fromJson(json['mp3']),
+      const IntConverter().fromJson(json['txt']),
+      const IntConverter().fromJson(json['zip']),
+      const IntConverter().fromJson(json['rar']),
+      const IntConverter().fromJson(json['pdf']),
     );
 
 Map<String, dynamic> _$AllowUploadToJson(AllowUpload instance) =>
     <String, dynamic>{
-      'jpg': stringFromInt(instance.jpg),
-      'jpeg': stringFromInt(instance.jpeg),
-      'gif': stringFromInt(instance.gif),
-      'png': stringFromInt(instance.png),
-      'mp3': stringFromInt(instance.mp3),
-      'txt': stringFromInt(instance.txt),
-      'zip': stringFromInt(instance.zip),
-      'rar': stringFromInt(instance.rar),
-      'pdf': stringFromInt(instance.pdf),
+      'jpg': const IntConverter().toJson(instance.jpg),
+      'jpeg': const IntConverter().toJson(instance.jpeg),
+      'gif': const IntConverter().toJson(instance.gif),
+      'png': const IntConverter().toJson(instance.png),
+      'mp3': const IntConverter().toJson(instance.mp3),
+      'txt': const IntConverter().toJson(instance.txt),
+      'zip': const IntConverter().toJson(instance.zip),
+      'rar': const IntConverter().toJson(instance.rar),
+      'pdf': const IntConverter().toJson(instance.pdf),
     };

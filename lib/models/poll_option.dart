@@ -3,7 +3,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'poll_option.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class PollOption {
   @JsonKey(name: 'polloptionid')
   final String pollOptionId;
@@ -11,13 +11,13 @@ class PollOption {
   @JsonKey(name: 'polloption')
   final String pollOption;
 
-  @JsonKey(name: 'votes', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'votes')
   final int votes;
 
   @JsonKey(name: 'width')
   final String width;
 
-  @JsonKey(name: 'percent', fromJson: stringToDouble, toJson: stringFromDouble)
+  @JsonKey(name: 'percent')
   final double percent;
 
   @JsonKey(name: 'color')

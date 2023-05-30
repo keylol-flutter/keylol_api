@@ -3,7 +3,7 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'attachment.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Attachment {
   @JsonKey(name: 'aid')
   final String aid;
@@ -32,16 +32,16 @@ class Attachment {
   @JsonKey(name: 'description')
   final String description;
 
-  @JsonKey(name: 'readperm', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'readperm')
   final int readPerm;
 
-  @JsonKey(name: 'price', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'price')
   final int price;
 
-  @JsonKey(name: 'isimage', fromJson: stringToBool, toJson: stringFromBool)
+  @JsonKey(name: 'isimage')
   final bool isImage;
 
-  @JsonKey(name: 'width', fromJson: stringToDouble, toJson: stringFromDouble)
+  @JsonKey(name: 'width')
   final double width;
 
   @JsonKey(name: 'thumb')
@@ -77,7 +77,7 @@ class Attachment {
   @JsonKey(name: 'aidencode')
   final String aidenCode;
 
-  @JsonKey(name: 'downloads', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'downloads')
   final int downloads;
 
   Attachment(

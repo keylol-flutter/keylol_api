@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
 part 'medal.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Medal {
   @JsonKey(name: 'name')
   final String name;

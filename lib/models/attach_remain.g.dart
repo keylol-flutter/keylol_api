@@ -7,12 +7,12 @@ part of 'attach_remain.dart';
 // **************************************************************************
 
 AttachRemain _$AttachRemainFromJson(Map<String, dynamic> json) => AttachRemain(
-      stringToInt(json['size'] as String),
-      stringToInt(json['count'] as String),
+      const IntConverter().fromJson(json['size']),
+      const IntConverter().fromJson(json['count']),
     );
 
 Map<String, dynamic> _$AttachRemainToJson(AttachRemain instance) =>
     <String, dynamic>{
-      'size': stringFromInt(instance.size),
-      'count': stringFromInt(instance.count),
+      'size': const IntConverter().toJson(instance.size),
+      'count': const IntConverter().toJson(instance.count),
     };

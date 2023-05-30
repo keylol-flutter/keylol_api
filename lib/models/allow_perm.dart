@@ -4,12 +4,12 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'allow_perm.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class AllowPerm {
-  @JsonKey(name: 'allowpost', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'allowpost')
   final int allowPost;
 
-  @JsonKey(name: 'allowreply', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'allowreply')
   final int allowReply;
 
   @JsonKey(name: 'allowupload')

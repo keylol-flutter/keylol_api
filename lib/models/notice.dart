@@ -3,18 +3,18 @@ import 'package:keylol_api/utils/json_util.dart';
 
 part 'notice.g.dart';
 
-@JsonSerializable()
+@customJsonSerializable
 class Notice {
-  @JsonKey(name: 'newpush', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newpush')
   final int newPush;
 
-  @JsonKey(name: 'newpm', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newpm')
   final int newPm;
 
-  @JsonKey(name: 'newprompt', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newprompt')
   final int newPrompt;
 
-  @JsonKey(name: 'newmypost', fromJson: stringToInt, toJson: stringFromInt)
+  @JsonKey(name: 'newmypost')
   final int newMyPost;
 
   Notice(this.newPush, this.newPm, this.newPrompt, this.newMyPost);
