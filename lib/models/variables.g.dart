@@ -18,7 +18,7 @@ DefaultVariables _$DefaultVariablesFromJson(Map<String, dynamic> json) =>
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
     );
 
 Map<String, dynamic> _$DefaultVariablesToJson(DefaultVariables instance) =>
@@ -36,7 +36,7 @@ Map<String, dynamic> _$DefaultVariablesToJson(DefaultVariables instance) =>
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
     };
 
 Json? _$JsonConverterToJson<Json, Value>(

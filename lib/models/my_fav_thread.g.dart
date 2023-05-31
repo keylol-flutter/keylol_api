@@ -17,7 +17,7 @@ MyFavThread _$MyFavThreadFromJson(Map<String, dynamic> json) => MyFavThread(
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
       (json['list'] as List<dynamic>)
           .map((e) => FavThread.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -40,7 +40,7 @@ Map<String, dynamic> _$MyFavThreadToJson(MyFavThread instance) =>
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
       'list': instance.list,
       'perpage': const IntConverter().toJson(instance.perPage),
       'c': const IntConverter().toJson(instance.count),

@@ -17,7 +17,7 @@ ViewThread _$ViewThreadFromJson(Map<String, dynamic> json) => ViewThread(
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
       const StringConverter().fromJson(json['fid']),
       Thread.fromJson(json['thread'] as Map<String, dynamic>),
       (json['postlist'] as List<dynamic>)
@@ -43,7 +43,7 @@ Map<String, dynamic> _$ViewThreadToJson(ViewThread instance) =>
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
       'fid': const StringConverter().toJson(instance.fid),
       'thread': instance.thread,
       'postlist': instance.postList,

@@ -17,7 +17,7 @@ ForumDisplay _$ForumDisplayFromJson(Map<String, dynamic> json) => ForumDisplay(
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
       Forum.fromJson(json['forum'] as Map<String, dynamic>),
       (json['forum_threadlist'] as List<dynamic>)
           .map((e) => Thread.fromJson(e as Map<String, dynamic>))
@@ -45,7 +45,7 @@ Map<String, dynamic> _$ForumDisplayToJson(ForumDisplay instance) =>
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
       'forum': instance.forum,
       'forum_threadlist': instance.forumThreadList,
       'sublist': instance.subList,

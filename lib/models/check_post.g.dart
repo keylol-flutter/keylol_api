@@ -17,7 +17,7 @@ CheckPost _$CheckPostFromJson(Map<String, dynamic> json) => CheckPost(
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
       AllowPerm.fromJson(json['allowperm'] as Map<String, dynamic>),
     );
 
@@ -35,7 +35,7 @@ Map<String, dynamic> _$CheckPostToJson(CheckPost instance) => <String, dynamic>{
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
       'allowperm': instance.allowPerm,
     };
 

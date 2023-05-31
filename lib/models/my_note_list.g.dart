@@ -17,7 +17,7 @@ MyNoteList _$MyNoteListFromJson(Map<String, dynamic> json) => MyNoteList(
       const StringConverter().fromJson(json['formhash']),
       const StringConverter().fromJson(json['ismoderator']),
       const StringConverter().fromJson(json['readaccess']),
-      Notice.fromJson(json['notice'] as Map<String, dynamic>),
+      fromJson(json['notice']),
       (json['list'] as List<dynamic>)
           .map((e) => Note.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -41,7 +41,7 @@ Map<String, dynamic> _$MyNoteListToJson(MyNoteList instance) =>
       'ismoderator': _$JsonConverterToJson<dynamic, String>(
           instance.isModerator, const StringConverter().toJson),
       'readaccess': const StringConverter().toJson(instance.readAccess),
-      'notice': instance.notice,
+      'notice': toJson(instance.notice),
       'list': instance.list,
       'count': const IntConverter().toJson(instance.count),
       'perpage': const IntConverter().toJson(instance.perPage),

@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'variables.g.dart';
 
-abstract class Variables {
+abstract class Variables extends Equatable {
   @JsonKey(name: 'cookiepre')
   final String cookiePre;
 
@@ -35,7 +36,7 @@ abstract class Variables {
   @JsonKey(name: 'readaccess')
   final String readAccess;
 
-  @JsonKey(name: 'notice')
+  @JsonKey(name: 'notice', fromJson: fromJson, toJson: toJson)
   final Notice notice;
 
   Variables(
@@ -50,6 +51,33 @@ abstract class Variables {
       this.isModerator,
       this.readAccess,
       this.notice);
+
+  @override
+  List<Object?> get props => [
+        cookiePre,
+        auth,
+        saltKey,
+        memberUid,
+        memberUsername,
+        memberAvatar,
+        groupId,
+        formHash,
+        isModerator,
+        readAccess,
+        notice,
+      ];
+}
+
+Notice fromJson(dynamic json) {
+  if (json == null) {
+    return Notice.fromJson({});
+  } else {
+    return Notice.fromJson(json);
+  }
+}
+
+dynamic toJson(Notice notice) {
+  return notice.toJson();
 }
 
 @customJsonSerializable
