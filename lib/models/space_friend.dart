@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/friend.dart';
 import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'space_friend.g.dart';
@@ -14,7 +13,7 @@ class SpaceFriend extends Variables {
   @JsonKey(name: 'count')
   final int count;
 
-  SpaceFriend(
+  const SpaceFriend(
       super.cookiePre,
       super.auth,
       super.saltKey,

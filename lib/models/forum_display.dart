@@ -3,7 +3,6 @@ import 'package:keylol_api/models/forum.dart';
 import 'package:keylol_api/models/thread.dart';
 import 'package:keylol_api/models/thread_type.dart';
 import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'forum_display.g.dart';
@@ -22,7 +21,7 @@ class ForumDisplay extends Variables {
   @JsonKey(name: 'threadtypes')
   final List<ThreadType> threadTypes;
 
-  ForumDisplay(
+  const ForumDisplay(
       super.cookiePre,
       super.auth,
       super.saltKey,

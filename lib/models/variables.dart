@@ -39,7 +39,7 @@ abstract class Variables extends Equatable {
   @JsonKey(name: 'notice', fromJson: fromJson, toJson: toJson)
   final Notice notice;
 
-  Variables(
+  const Variables(
       this.cookiePre,
       this.auth,
       this.saltKey,
@@ -82,7 +82,7 @@ dynamic toJson(Notice notice) {
 
 @customJsonSerializable
 class DefaultVariables extends Variables {
-  DefaultVariables(
+  const DefaultVariables(
       super.cookiePre,
       super.auth,
       super.saltKey,

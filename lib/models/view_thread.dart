@@ -3,7 +3,6 @@ import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/special_poll.dart';
 import 'package:keylol_api/models/thread.dart';
 import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'view_thread.g.dart';
@@ -22,7 +21,7 @@ class ViewThread extends Variables {
   @JsonKey(name: 'special_poll', disallowNullValue: false)
   final SpecialPoll? specialPoll;
 
-  ViewThread(
+  const ViewThread(
       super.cookiePre,
       super.auth,
       super.saltKey,

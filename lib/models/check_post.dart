@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/allow_perm.dart';
 import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'check_post.g.dart';
@@ -11,7 +10,7 @@ class CheckPost extends Variables {
   @JsonKey(name: 'allowperm')
   final AllowPerm allowPerm;
 
-  CheckPost(
+  const CheckPost(
       super.cookiePre,
       super.auth,
       super.saltKey,

@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:keylol_api/models/note.dart';
 import 'package:keylol_api/models/variables.dart';
-import 'package:keylol_api/models/notice.dart';
 import 'package:keylol_api/utils/json_util.dart';
 
 part 'my_note_list.g.dart';
@@ -20,7 +19,7 @@ class MyNoteList extends Variables {
   @JsonKey(name: 'page')
   final int page;
 
-  MyNoteList(
+  const MyNoteList(
       super.cookiePre,
       super.auth,
       super.saltKey,
