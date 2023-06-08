@@ -65,7 +65,9 @@ Space _$SpaceFromJson(Map<String, dynamic> json) => Space(
       const StringConverter().fromJson(json['spacecss']),
       const StringConverter().fromJson(json['blockposition']),
       const StringConverter().fromJson(json['recentnote']),
-      Privacy.fromJson(json['privacy'] as Map<String, dynamic>),
+      json['privacy'] == null
+          ? null
+          : Privacy.fromJson(json['privacy'] as Map<String, dynamic>),
       const StringConverter().fromJson(json['feedfriend']),
       (json['acceptemail'] as List<dynamic>)
           .map(const StringConverter().fromJson)
@@ -75,9 +77,7 @@ Space _$SpaceFromJson(Map<String, dynamic> json) => Space(
       const IntConverter().fromJson(json['publishfeed']),
       const IntConverter().fromJson(json['customShow']),
       const StringConverter().fromJson(json['customStatus']),
-      (json['medals'] as List<dynamic>)
-          .map((e) => Medal.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      Space.medalsFromJson(json['medals']),
       const StringConverter().fromJson(json['signhtml']),
       const StringConverter().fromJson(json['groupterms']),
       const StringConverter().fromJson(json['authstr']),
@@ -132,8 +132,12 @@ Space _$SpaceFromJson(Map<String, dynamic> json) => Space(
       const StringConverter().fromJson(json['favtimes']),
       const StringConverter().fromJson(json['sharetimes']),
       const StringConverter().fromJson(json['profileprogress']),
-      Group.fromJson(json['admingroup'] as Map<String, dynamic>),
-      Group.fromJson(json['group'] as Map<String, dynamic>),
+      json['admingroup'] == null
+          ? null
+          : Group.fromJson(json['admingroup'] as Map<String, dynamic>),
+      json['group'] == null
+          ? null
+          : Group.fromJson(json['group'] as Map<String, dynamic>),
       const StringConverter().fromJson(json['lastactivitydb']),
       const StringConverter().fromJson(json['lastip_loc_province']),
       const StringConverter().fromJson(json['buyerrank']),

@@ -45,6 +45,7 @@ class BoolConverter extends JsonConverter<bool, dynamic> {
 
   @override
   bool fromJson(json) => json == '1' ? true : false;
+
   @override
   toJson(bool object) => object ? '1' : '0';
 }
@@ -54,7 +55,7 @@ class ColorConverter extends JsonConverter<Color?, dynamic> {
 
   @override
   Color? fromJson(json) {
-    if (json == null) {
+    if (json == null || json == '') {
       return null;
     }
     final radix =

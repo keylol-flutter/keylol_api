@@ -183,7 +183,7 @@ class Space {
   final String recentNote;
 
   @JsonKey(name: 'privacy')
-  final Privacy privacy;
+  final Privacy? privacy;
 
   @JsonKey(name: 'feedfriend')
   final String feedFriend;
@@ -206,7 +206,7 @@ class Space {
   @JsonKey(name: 'customStatus')
   final String customStatus;
 
-  @JsonKey(name: 'medals')
+  @JsonKey(name: 'medals', fromJson: medalsFromJson)
   final List<Medal> medals;
 
   @JsonKey(name: 'signhtml')
@@ -372,10 +372,10 @@ class Space {
   final String profileProgress;
 
   @JsonKey(name: 'admingroup')
-  final Group adminGroup;
+  final Group? adminGroup;
 
   @JsonKey(name: 'group')
-  final Group group;
+  final Group? group;
 
   @JsonKey(name: 'lastactivitydb')
   final String lastActivityDb;
@@ -525,4 +525,13 @@ class Space {
   factory Space.fromJson(Map<String, dynamic> json) => _$SpaceFromJson(json);
 
   Map<String, dynamic> toJson() => _$SpaceToJson(this);
+
+  static List<Medal> medalsFromJson(dynamic json) {
+    if (json == '' || json == null) {
+      return [];
+    }
+    return (json as List<String>)
+        .map((e) => Medal.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
 }
