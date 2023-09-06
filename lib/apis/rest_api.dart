@@ -35,7 +35,6 @@ extension RestApi on Keylol {
   /// 有异常时 message 不为空，和帖子可并存
   Future<ApiResponse<ViewThread>> viewThread(String tid, int page) async {
     final resp = await dio().get("/api/mobile/index.php", queryParameters: {
-      'version': null,
       'module': 'viewthread',
       'tid': tid,
       'cp': 'all',

@@ -45,4 +45,9 @@ void main() {
       expect(index.tabThreadMap.containsKey('最新回复'), false);
     });
   });
+
+  group('testGuide', () {
+    final mockDio = MockDio();
+    final client = Keylol(mockDio);
+  });
 }

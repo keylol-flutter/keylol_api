@@ -25,9 +25,7 @@ ForumDisplay _$ForumDisplayFromJson(Map<String, dynamic> json) => ForumDisplay(
       (json['sublist'] as List<dynamic>)
           .map((e) => Forum.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['threadtypes'] as List<dynamic>)
-          .map((e) => ThreadType.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      ForumDisplay.threadTypesFromJson(json['threadtypes']),
     );
 
 Map<String, dynamic> _$ForumDisplayToJson(ForumDisplay instance) =>

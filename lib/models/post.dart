@@ -62,7 +62,7 @@ class Post {
   @JsonKey(name: 'dbdateline')
   final String dbDateline;
 
-  @JsonKey(name: 'attachments')
+  @JsonKey(name: 'attachments', fromJson: attachmentsFromJson)
   final Map<String, Attachment>? attachments;
 
   @JsonKey(name: 'imagelist')
@@ -125,5 +125,22 @@ class Post {
     }
 
     return _shortMessage!;
+  }
+
+  static Map<String, Attachment>? attachmentsFromJson(dynamic json) {
+    if (json == '' || json == null) {
+      return {};
+    }
+    if (json is List) {
+      final list =
+          json.map((e) => Attachment.fromJson(e as Map<String, dynamic>));
+      return {
+        for (final e in list) e.aid: e,
+      };
+    } else {
+      return (json as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, Attachment.fromJson(e as Map<String, dynamic>)),
+      );
+    }
   }
 }

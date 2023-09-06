@@ -28,7 +28,7 @@ class Note {
   final String note;
 
   @JsonKey(name: 'dateline')
-  final String dateline;
+  final int dateline;
 
   @JsonKey(name: 'fromid')
   final String fromId;

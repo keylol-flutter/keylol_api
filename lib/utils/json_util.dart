@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:html_unescape/html_unescape.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+final _unescape = HtmlUnescape();
 
 Color stringToColor(String color) {
   final radix = RegExp(r'#([a-z0-9]{6})').firstMatch(color)!.group(1);
@@ -14,7 +17,8 @@ class StringConverter extends JsonConverter<String, dynamic> {
   const StringConverter();
 
   @override
-  String fromJson(json) => json == null ? '' : json as String;
+  String fromJson(json) =>
+      json == null ? '' : _unescape.convert(json as String);
 
   @override
   toJson(String object) => object;

@@ -69,8 +69,8 @@ Space _$SpaceFromJson(Map<String, dynamic> json) => Space(
           ? null
           : Privacy.fromJson(json['privacy'] as Map<String, dynamic>),
       const StringConverter().fromJson(json['feedfriend']),
-      (json['acceptemail'] as List<dynamic>)
-          .map(const StringConverter().fromJson)
+      (json['acceptemail'] as List<dynamic>?)
+          ?.map(const StringConverter().fromJson)
           .toList(),
       const StringConverter().fromJson(json['magicgift']),
       const StringConverter().fromJson(json['stickblogs']),
@@ -211,7 +211,7 @@ Map<String, dynamic> _$SpaceToJson(Space instance) => <String, dynamic>{
       'privacy': instance.privacy,
       'feedfriend': const StringConverter().toJson(instance.feedFriend),
       'acceptemail':
-          instance.acceptEmail.map(const StringConverter().toJson).toList(),
+          instance.acceptEmail?.map(const StringConverter().toJson).toList(),
       'magicgift': const StringConverter().toJson(instance.magicGift),
       'stickblogs': const StringConverter().toJson(instance.stickBlogs),
       'publishfeed': const IntConverter().toJson(instance.publishFeed),

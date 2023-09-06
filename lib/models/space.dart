@@ -189,7 +189,7 @@ class Space {
   final String feedFriend;
 
   @JsonKey(name: 'acceptemail')
-  final List<String> acceptEmail;
+  final List<String>? acceptEmail;
 
   @JsonKey(name: 'magicgift')
   final String magicGift;

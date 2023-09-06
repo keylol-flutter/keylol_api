@@ -8,14 +8,11 @@ class Forum {
   @JsonKey(name: 'fid')
   final String fid;
 
-  @JsonKey(name: 'fup')
-  final String fup;
-
   @JsonKey(name: 'name')
   final String name;
 
-  @JsonKey(name: 'rule')
-  final String rule;
+  @JsonKey(name: 'rules')
+  final String rules;
 
   @JsonKey(name: 'threads')
   final int threads;
@@ -29,8 +26,11 @@ class Forum {
   @JsonKey(name: 'description')
   final String description;
 
-  Forum(this.fid, this.fup, this.name, this.rule, this.threads, this.posts,
-      this.todayPosts, this.description);
+  @JsonKey(name: 'icon')
+  final String icon;
+
+  Forum(this.fid, this.name, this.rules, this.threads, this.posts,
+      this.todayPosts, this.description, this.icon);
 
   factory Forum.fromJson(Map<String, dynamic> json) => _$ForumFromJson(json);
 

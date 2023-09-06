@@ -18,7 +18,7 @@ class ForumDisplay extends Variables {
   @JsonKey(name: 'sublist')
   final List<Forum> subList;
 
-  @JsonKey(name: 'threadtypes')
+  @JsonKey(name: 'threadtypes', fromJson: threadTypesFromJson)
   final List<ThreadType> threadTypes;
 
   const ForumDisplay(
@@ -43,7 +43,11 @@ class ForumDisplay extends Variables {
 
   Map<String, dynamic> toJson() => _$ForumDisplayToJson(this);
 
-  static List<ThreadType> threadTypesFromJson(Map<String, dynamic> json) {
+  static List<ThreadType> threadTypesFromJson(dynamic json) {
+    if (json == null) {
+      return [];
+    }
+
     final Map<String, dynamic> types = json['types'];
     final Map<String, dynamic> icons = json['icons'];
 

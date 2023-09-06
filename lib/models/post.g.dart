@@ -25,9 +25,7 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post(
       const StringConverter().fromJson(json['memberstatus']),
       const IntConverter().fromJson(json['number']),
       const StringConverter().fromJson(json['dbdateline']),
-      (json['attachments'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, Attachment.fromJson(e as Map<String, dynamic>)),
-      ),
+      Post.attachmentsFromJson(json['attachments']),
       (json['imagelist'] as List<dynamic>?)
           ?.map(const StringConverter().fromJson)
           .toList(),
