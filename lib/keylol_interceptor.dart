@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+const ignoreModules = ['forumupload'];
+
 abstract class KeylolInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
@@ -14,6 +16,15 @@ abstract class KeylolInterceptor extends Interceptor {
     final uri = response.realUri;
     if (!uri.path.contains('/api/mobile/index.php')) {
       return false;
+    } else {
+      final requestOptions = response.requestOptions;
+      final module = requestOptions.queryParameters['module'];
+      if (module == null) {
+        return false;
+      }
+      if (ignoreModules.contains(module)) {
+        return false;
+      }
     }
     return true;
   }
