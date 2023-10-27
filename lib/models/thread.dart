@@ -105,7 +105,7 @@ class Thread {
 
   // 封面
   @JsonKey(name: 'cover')
-  final Map<String, dynamic>? cover;
+  final dynamic cover;
   @JsonKey(name: 'replycredit')
   final String replyCredit;
   @JsonKey(name: 'maxposition')

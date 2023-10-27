@@ -42,7 +42,7 @@ Thread _$ThreadFromJson(Map<String, dynamic> json) => Thread(
       const StringConverter().fromJson(json['stamp']),
       const StringConverter().fromJson(json['icon']),
       const StringConverter().fromJson(json['pushedaid']),
-      json['cover'] as Map<String, dynamic>?,
+      json['cover'],
       const StringConverter().fromJson(json['replycredit']),
       const IntConverter().fromJson(json['maxposition']),
       const StringConverter().fromJson(json['bgcolor']),
@@ -95,8 +95,7 @@ Map<String, dynamic> _$ThreadToJson(Thread instance) => <String, dynamic>{
       'stamp': const StringConverter().toJson(instance.stamp),
       'icon': const StringConverter().toJson(instance.icon),
       'pushedaid': const StringConverter().toJson(instance.pushedAId),
-      'cover': instance.cover
-          ?.map((k, e) => MapEntry(const StringConverter().toJson(k), e)),
+      'cover': instance.cover,
       'replycredit': const StringConverter().toJson(instance.replyCredit),
       'maxposition': const IntConverter().toJson(instance.maxPosition),
       'bgcolor': const StringConverter().toJson(instance.bgColor),
