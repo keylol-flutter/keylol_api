@@ -9,7 +9,7 @@ class Group {
   @JsonKey(name: 'type')
   final String type;
 
-  @JsonKey(name: 'groupTitle')
+  @JsonKey(name: 'grouptitle')
   final String groupTitle;
 
   @JsonKey(name: 'stars')

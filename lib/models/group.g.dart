@@ -8,7 +8,7 @@ part of 'group.dart';
 
 Group _$GroupFromJson(Map<String, dynamic> json) => Group(
       const StringConverter().fromJson(json['type']),
-      const StringConverter().fromJson(json['groupTitle']),
+      const StringConverter().fromJson(json['grouptitle']),
       const IntConverter().fromJson(json['stars']),
       const ColorConverter().fromJson(json['color']),
       const StringConverter().fromJson(json['icon']),
@@ -23,7 +23,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) => Group(
 
 Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
       'type': const StringConverter().toJson(instance.type),
-      'groupTitle': const StringConverter().toJson(instance.groupTitle),
+      'grouptitle': const StringConverter().toJson(instance.groupTitle),
       'stars': const IntConverter().toJson(instance.stars),
       'color': const ColorConverter().toJson(instance.color),
       'icon': const StringConverter().toJson(instance.icon),
