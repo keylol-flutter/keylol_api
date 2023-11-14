@@ -427,6 +427,7 @@ class Space {
       this.extCredits7,
       this.extCredits8,
       this.friends,
+      this.posts,
       this.threads,
       this.digestPosts,
       this.doings,
