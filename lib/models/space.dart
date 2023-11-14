@@ -104,6 +104,9 @@ class Space {
   @JsonKey(name: 'threads')
   final int threads;
 
+  @JsonKey(name: 'posts')
+  final int posts;
+
   @JsonKey(name: 'digestPosts')
   final int digestPosts;
 
@@ -530,7 +533,7 @@ class Space {
     if (json == '' || json == null) {
       return [];
     }
-    return (json as List<String>)
+    return (json as List<dynamic>)
         .map((e) => Medal.fromJson(e as Map<String, dynamic>))
         .toList();
   }
