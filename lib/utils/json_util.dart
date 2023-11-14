@@ -62,8 +62,15 @@ class ColorConverter extends JsonConverter<Color?, dynamic> {
     if (json == null || json == '') {
       return null;
     }
-    final radix =
-        RegExp(r'#([a-z0-9]{6})').firstMatch(json as String)!.group(1);
+    var radix = RegExp(r'#([a-z0-9]{6})').firstMatch(json as String)?.group(1);
+    if (radix == null) {
+      radix = RegExp(r'#([a-z0-9]{3})').firstMatch(json)?.group(1);
+      if (radix == null) {
+        return null;
+      }
+      radix =
+          '${radix[0]}${radix[0]}${radix[1]}${radix[1]}${radix[2]}${radix[2]}';
+    }
     return Color(int.parse('ff$radix', radix: 16));
   }
 
