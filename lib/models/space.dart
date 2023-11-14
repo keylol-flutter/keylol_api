@@ -212,7 +212,7 @@ class Space {
   @JsonKey(name: 'medals', fromJson: medalsFromJson)
   final List<Medal> medals;
 
-  @JsonKey(name: 'signhtml')
+  @JsonKey(name: 'sightml')
   final String signHtml;
 
   @JsonKey(name: 'groupterms')
