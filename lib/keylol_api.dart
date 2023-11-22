@@ -40,3 +40,4 @@ export 'models/thread_type.dart';
 export 'models/variables.dart';
 export 'models/view_privacy.dart';
 export 'models/view_thread.dart';
+export 'models/comment.dart';

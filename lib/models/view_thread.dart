@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:keylol_api/models/comment.dart';
 import 'package:keylol_api/models/post.dart';
 import 'package:keylol_api/models/special_poll.dart';
 import 'package:keylol_api/models/thread.dart';
@@ -18,6 +19,9 @@ class ViewThread extends Variables {
   @JsonKey(name: 'postlist')
   final List<Post> postList;
 
+  @JsonKey(name: 'comments', fromJson: commentsFromJson)
+  final Map<String, List<Comment>> comments;
+
   @JsonKey(name: 'special_poll', disallowNullValue: false)
   final SpecialPoll? specialPoll;
 
@@ -36,10 +40,21 @@ class ViewThread extends Variables {
       this.fid,
       this.thread,
       this.postList,
+      this.comments,
       this.specialPoll);
 
   factory ViewThread.fromJson(Map<String, dynamic> json) =>
       _$ViewThreadFromJson(json);
 
   Map<String, dynamic> toJson() => _$ViewThreadToJson(this);
+
+  static Map<String, List<Comment>> commentsFromJson(dynamic json) {
+    if (json == '' || json == null || json is! Map<String, dynamic>) {
+      return {};
+    }
+    return json.map(
+      (k, e) => MapEntry(
+          k, (e as List<dynamic>).map((e) => Comment.fromJson(e)).toList()),
+    );
+  }
 }

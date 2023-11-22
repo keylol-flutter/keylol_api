@@ -23,6 +23,7 @@ ViewThread _$ViewThreadFromJson(Map<String, dynamic> json) => ViewThread(
       (json['postlist'] as List<dynamic>)
           .map((e) => Post.fromJson(e as Map<String, dynamic>))
           .toList(),
+      ViewThread.commentsFromJson(json['comments']),
       json['special_poll'] == null
           ? null
           : SpecialPoll.fromJson(json['special_poll'] as Map<String, dynamic>),
@@ -47,6 +48,8 @@ Map<String, dynamic> _$ViewThreadToJson(ViewThread instance) =>
       'fid': const StringConverter().toJson(instance.fid),
       'thread': instance.thread,
       'postlist': instance.postList,
+      'comments': instance.comments
+          .map((k, e) => MapEntry(const StringConverter().toJson(k), e)),
       'special_poll': instance.specialPoll,
     };
 
