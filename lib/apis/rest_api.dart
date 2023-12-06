@@ -38,7 +38,8 @@ extension RestApi on Keylol {
       'module': 'viewthread',
       'tid': tid,
       'cp': 'all',
-      'page': page
+      'page': page,
+      'version': null,
     });
 
     return compute(ApiResponse.fromJson, {
