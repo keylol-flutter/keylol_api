@@ -18,7 +18,7 @@ class Notice extends Equatable {
   @JsonKey(name: 'newmypost')
   final int newMyPost;
 
-  Notice(this.newPush, this.newPm, this.newPrompt, this.newMyPost);
+  const Notice(this.newPush, this.newPm, this.newPrompt, this.newMyPost);
 
   factory Notice.fromJson(Map<String, dynamic> json) => _$NoticeFromJson(json);
 

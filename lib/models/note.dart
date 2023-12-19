@@ -30,13 +30,13 @@ class Note {
   @JsonKey(name: 'dateline')
   final int dateline;
 
-  @JsonKey(name: 'fromid')
+  @JsonKey(name: 'from_id')
   final String fromId;
 
-  @JsonKey(name: 'fromidtype')
+  @JsonKey(name: 'from_idtype')
   final String fromIdType;
 
-  @JsonKey(name: 'fromnum')
+  @JsonKey(name: 'from_num')
   final String fromNum;
 
   @JsonKey(name: 'notevar')
