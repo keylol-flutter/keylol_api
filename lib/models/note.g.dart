@@ -15,9 +15,9 @@ Note _$NoteFromJson(Map<String, dynamic> json) => Note(
       const StringConverter().fromJson(json['author']),
       const StringConverter().fromJson(json['note']),
       const IntConverter().fromJson(json['dateline']),
-      const StringConverter().fromJson(json['fromid']),
-      const StringConverter().fromJson(json['fromidtype']),
-      const StringConverter().fromJson(json['fromnum']),
+      const StringConverter().fromJson(json['from_id']),
+      const StringConverter().fromJson(json['from_idtype']),
+      const StringConverter().fromJson(json['from_num']),
       json['notevar'] == null
           ? null
           : NoteVar.fromJson(json['notevar'] as Map<String, dynamic>),
@@ -32,8 +32,8 @@ Map<String, dynamic> _$NoteToJson(Note instance) => <String, dynamic>{
       'author': const StringConverter().toJson(instance.author),
       'note': const StringConverter().toJson(instance.note),
       'dateline': const IntConverter().toJson(instance.dateline),
-      'fromid': const StringConverter().toJson(instance.fromId),
-      'fromidtype': const StringConverter().toJson(instance.fromIdType),
-      'fromnum': const StringConverter().toJson(instance.fromNum),
+      'from_id': const StringConverter().toJson(instance.fromId),
+      'from_idtype': const StringConverter().toJson(instance.fromIdType),
+      'from_num': const StringConverter().toJson(instance.fromNum),
       'notevar': instance.noteVar,
     };
