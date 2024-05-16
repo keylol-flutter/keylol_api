@@ -28,8 +28,9 @@ part 'apis/web_api.dart';
 
 class Keylol {
   final Dio _dio;
+  final CookieJar _cj;
 
-  Keylol(this._dio);
+  Keylol(this._dio, this._cj);
 
   static Future<Keylol> create() async {
     final dio = Dio(BaseOptions(
@@ -46,10 +47,17 @@ class Keylol {
     final cj = PersistCookieJar(storage: FileStorage(appDocPath + cookiePath));
     dio.interceptors.add(CookieManager(cj));
 
-    return Keylol(dio);
+    return Keylol(dio, cj);
   }
 
   Dio dio() => _dio;
+
+  Future<List<Map<String, String>>> cookies() async {
+    final cookies = await _cj.loadForRequest(Uri.parse(baseUrl));
+    return cookies.map((cookie) {
+      return {cookie.name: cookie.value};
+    }).toList();
+  }
 
   void addInterceptor(Interceptor interceptor) {
     _dio.interceptors.add(interceptor);
