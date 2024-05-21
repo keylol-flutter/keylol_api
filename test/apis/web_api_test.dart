@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:keylol_api/keylol.dart';
@@ -12,7 +13,7 @@ import 'web_api_test.mocks.dart';
 void main() {
   group('testIndex', () {
     final mockDio = MockDio();
-    final client = Keylol(mockDio);
+    final client = Keylol(mockDio, DefaultCookieJar());
 
     test('should success', () async {
       when(mockDio.get('/'))
@@ -48,6 +49,6 @@ void main() {
 
   group('testGuide', () {
     final mockDio = MockDio();
-    final client = Keylol(mockDio);
+    final client = Keylol(mockDio, DefaultCookieJar());
   });
 }
