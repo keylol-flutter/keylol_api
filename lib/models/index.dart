@@ -1,7 +1,11 @@
 import 'package:html/dom.dart';
 import 'package:keylol_api/models/thread.dart';
 import 'package:keylol_api/utils/common_util.dart';
+import 'package:keylol_api/utils/json_util.dart';
 
+part 'index.g.dart';
+
+@customJsonSerializable
 class Index {
   // 轮播图
   final List<Thread> slideViewThreads;
@@ -81,4 +85,8 @@ class Index {
 
     return Index(slideViewThreads, tabThreadMap);
   }
+
+  factory Index.fromJson(Map<String, dynamic> json) => _$IndexFromJson(json);
+
+  Map<String, dynamic> toJson() => _$IndexToJson(this);
 }
