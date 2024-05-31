@@ -59,6 +59,10 @@ class Keylol {
     }).toList();
   }
 
+  Future<void> cleanCookies() async {
+    await _cj.deleteAll();
+  }
+
   void addInterceptor(Interceptor interceptor) {
     _dio.interceptors.add(interceptor);
   }
