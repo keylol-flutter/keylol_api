@@ -8,13 +8,13 @@ part 'privacy.g.dart';
 
 @customJsonSerializable
 class Privacy {
-  @JsonKey(name: 'feed')
+  @JsonKey(name: 'feed', fromJson: feedFromJson)
   final FeedPrivacy feed;
 
-  @JsonKey(name: 'view')
+  @JsonKey(name: 'view', fromJson: viewFromJson)
   final ViewPrivacy view;
 
-  @JsonKey(name: 'profile')
+  @JsonKey(name: 'profile', fromJson: profileFromJson)
   final ProfilePrivacy profie;
 
   Privacy(this.feed, this.view, this.profie);
@@ -24,7 +24,7 @@ class Privacy {
 
   Map<String, dynamic> toJson() => _$PrivacyToJson(this);
 
-  static FeedPrivacy privacyFromJson(dynamic json) {
+  static FeedPrivacy feedFromJson(dynamic json) {
     if (json == '' || json == null || json is List<dynamic>) {
       return FeedPrivacy.fromJson({});
     }

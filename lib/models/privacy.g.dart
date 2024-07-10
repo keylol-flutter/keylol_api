@@ -7,9 +7,9 @@ part of 'privacy.dart';
 // **************************************************************************
 
 Privacy _$PrivacyFromJson(Map<String, dynamic> json) => Privacy(
-      FeedPrivacy.fromJson(json['feed'] as Map<String, dynamic>),
-      ViewPrivacy.fromJson(json['view'] as Map<String, dynamic>),
-      ProfilePrivacy.fromJson(json['profile'] as Map<String, dynamic>),
+      Privacy.feedFromJson(json['feed']),
+      Privacy.viewFromJson(json['view']),
+      Privacy.profileFromJson(json['profile']),
     );
 
 Map<String, dynamic> _$PrivacyToJson(Privacy instance) => <String, dynamic>{
