@@ -23,4 +23,28 @@ class Privacy {
       _$PrivacyFromJson(json);
 
   Map<String, dynamic> toJson() => _$PrivacyToJson(this);
+
+  static FeedPrivacy privacyFromJson(dynamic json) {
+    if (json == '' || json == null || json is List<dynamic>) {
+      return FeedPrivacy.fromJson({});
+    }
+
+    return FeedPrivacy.fromJson(json);
+  }
+
+  static ViewPrivacy viewFromJson(dynamic json) {
+    if (json == '' || json == null || json is List<dynamic>) {
+      return ViewPrivacy.fromJson({});
+    }
+
+    return ViewPrivacy.fromJson(json);
+  }
+
+  static ProfilePrivacy profileFromJson(dynamic json) {
+    if (json == '' || json == null || json is List<dynamic>) {
+      return ProfilePrivacy.fromJson({});
+    }
+
+    return ProfilePrivacy.fromJson(json);
+  }
 }

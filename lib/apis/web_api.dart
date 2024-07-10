@@ -237,6 +237,7 @@ extension WebApi on Keylol {
   }
 
   /// 导读
+  /// view: ['hot', 'digest', 'newthread', 'new', 'sofa']
   Future<Guide> guide(String view, int page) async {
     final resp = await dio().get('/forum.php', queryParameters: {
       'mod': 'guide',

@@ -50,5 +50,24 @@ void main() {
   group('testGuide', () {
     final mockDio = MockDio();
     final client = Keylol(mockDio, DefaultCookieJar());
+
+    test('should success', () async {
+      when(mockDio.get(
+        '/forum.php',
+        queryParameters: {
+          'mod': 'guide',
+          'view': 'hot',
+          'page': 1,
+        },
+      )).thenAnswer((realInvocation) => Future.value(Response(
+            statusCode: 200,
+            data: File('test_resources/guide_hot.html').readAsStringSync(),
+            requestOptions: RequestOptions(path: '/forum.php'),
+          )));
+
+      final guide = await client.guide('hot', 1);
+
+      expect(guide.list.isNotEmpty, true);
+    });
   });
 }

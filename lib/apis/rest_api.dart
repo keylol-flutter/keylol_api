@@ -33,13 +33,14 @@ extension RestApi on Keylol {
   /// postList[0] 为帖子
   /// 不存在时 postList 为空
   /// 有异常时 message 不为空，和帖子可并存
-  Future<ApiResponse<ViewThread>> viewThread(String tid, int page) async {
+  Future<ApiResponse<ViewThread>> viewThread(String tid, int page,
+      {int? version}) async {
     final resp = await dio().get("/api/mobile/index.php", queryParameters: {
       'module': 'viewthread',
       'tid': tid,
       'cp': 'all',
       'page': page,
-      'version': null,
+      'version': version,
     });
 
     return compute(ApiResponse.fromJson, {
